@@ -1,55 +1,87 @@
 <template>
-    <div id="home">
-        <nav id="bar">
-            <ul>
-                <li>
-                    <i class="logo">
-                        <img src="@/assets/logo.png" />
-                    </i>
-                </li>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a class="extra" href="#">Explore</a></li>
-            </ul>  
-        </nav>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br>
-    </div>
+  <div id="home">
+    <nav id="bar">
+        <ul>
+            <li>
+                <i class="logo">
+                    <img src="@/assets/logo.png" />
+                </i>
+            </li>
+            <li><a class="bar-title" @click="fuck">个人主页</a></li>
+            <li><a class="bar-title" href="#">日志</a></li>
+            <li><a class="bar-title" href="#">自我介绍</a></li>
+            <li><a class="bar-title" id="help" href="#">帮助</a></li>
+        </ul>
+    </nav>
+    <span id="editor">
+      <mavon-editor
+        style="height:400px;z-index:1"
+        v-model="content"
+        ref=md
+        @imgAdd="$imgAdd"
+        placeholder="请开始您的创作..." />
+    </span>
+    <Button @click="show">CLick me</Button>
+
+  </div>
 </template>
 <script>
-export default {
-    
-}
+  export default {
+    data(){
+      return{
+        msg: 'Waiting',
+        markdownOption: {
+          bold:true
+        },
+        handbook: ''
+      }
+    },
+    methods:{
+      show(){
+        this.handbook=this.content
+        alert(this.content)
+      }
+    }
+  }
 </script>
 <style scoped>
-    #home #bar ul{
-        list-style-type: none;
-        width: 100%;
-        position: fixed;
-        font-size: 20px;
-        margin: 0;
-        padding:0;
-        top: 0;
+  @media screen and (max-width: 375px) {
+    #home #bar ul li #help{
+      display: none;
     }
-    #home #bar ul li{
-        float: left;
-        margin: 20px;
-    }
-    #home #bar .logo{
-        width: 10px;
-        height: 10px;
-        font-style: normal;
-    }
-    #home #bar .logo img{
-        max-width:10%;
-        min-height:10%;
-        display:block;
-        font-size:0;
-    }
+  }
+  #home #bar ul{
+    box-shadow: 0px 4px 5px #b4b4b4;
+    list-style-type: none;
+    width: 100%;
+    position: fixed;
+    font-size: 16px;
+    background: white;
+  }
+  #home #bar ul li{
+    float: left;
+  }
+  #home #bar ul li .bar-title{
+    color: #999999;
+    font-family: "Microsoft YaHei UI Light";
+    display: block;
+    padding-top: 7px;
+    margin: 10px;
+  }
+  #home #bar ul li .bar-title:hover{
+    color: black;
+  }
+  #home #bar .logo{
+
+  }
+  #home #bar .logo img{
+    padding-top: 3px;
+    padding-left: 3px;
+    width: 70%;
+  }
+  #home #editor{
+    display: block;
+    padding-top: 70px;
+    width: 100%;
+  }
 </style>

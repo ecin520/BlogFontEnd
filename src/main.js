@@ -5,9 +5,12 @@ import App from './App'
 import router from './router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
-import VueRouter from 'vue-router';
+
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 
 Vue.use(iView)
+Vue.use(mavonEditor)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
