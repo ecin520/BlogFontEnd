@@ -4,26 +4,33 @@
         <ul>
             <li>
                 <i class="logo">
-                    <img src="@/assets/logo.png" />
+                    <img src="@/assets/logo.png" alt="" />
                 </i>
             </li>
             <li><a class="bar-title" @click="fuck">个人主页</a></li>
             <li><a class="bar-title" href="#">日志</a></li>
             <li><a class="bar-title" href="#">自我介绍</a></li>
             <li><a class="bar-title" id="help" href="#">帮助</a></li>
+<!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
+            <li>
+              <Poptip id="creation"
+                      placement="bottom-end"
+                      width="200">
+                <a class="bar-title">Creation</a>
+                <div class="api" slot="content">
+                  <Input v-model="key" size="small" type="textarea" placeholder="Input the private key"/><br>
+                  <a @click="enterClick" style="font-size: 20px">
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter
+                  </a>
+                </div>
+              </Poptip>
+            </li>
         </ul>
     </div>
-    <div id="editor">
-      <mavon-editor
-        style="height:900px;z-index:1"
-        v-model="content"
-        ref=md
-        @imgAdd="$imgAdd"
-        placeholder="请开始您的创作..." />
-    </div>
-<!--    <Button @click="show">CLick me</Button>-->
+
     <div id="footer">
-<!--      <a>This is footer by Ecin520</a>-->
+
     </div>
   </div>
 </template>
@@ -31,17 +38,27 @@
   export default {
     data(){
       return{
-        msg: 'Waiting',
-        markdownOption: {
-          bold:true
-        },
-        handbook: ''
+        showContent: ''
+        // toolbars: {
+        //   language: 'en',
+        //   htmlcode: true,
+        //   save: true,
+        //   subfield: true,
+        //   preview: true
+        // }
       }
     },
     methods:{
-      show(){
-        this.handbook=this.content
+      fuck(){
         alert(this.content)
+        this.showContent=this.content;
+      },
+      enterClick(){
+        if(this.key === ''){
+          this.$router.push({path: '/creation'});
+        }
+        else
+          alert('error go away')
       }
     }
   }
@@ -59,7 +76,7 @@
     z-index: 1;
   }
   #home #bar ul{
-    box-shadow: 0 4px 5px #b4b4b4;
+    box-shadow: 0 2px 5px #b4b4b4;
     list-style-type: none;
     width: 100%;
     position: fixed;
@@ -70,30 +87,34 @@
     float: left;
   }
   #home #bar ul li .bar-title{
-    color: #999999;
-    font-family: "Microsoft YaHei UI Light",serif;
+    color: deepskyblue;
+    font-family: "Microsoft YaHei UI",serif;
     display: block;
     padding-top: 7px;
     margin: 10px;
   }
   #home #bar ul li .bar-title:hover{
-    color: black;
+    text-shadow: 1px 1px 8px #20a0ed;
+    transform: rotate(0deg);
+    transition: all 0.1s linear;
+    color: dodgerblue;
     font-size: 18px;
   }
-  #home #bar .logo{
+  #home #bar ul li #creation{
+    position: absolute;
+    right: 20px;
+  }
+
+  #home #bar .logo:hover{
 
   }
   #home #bar .logo img{
+
     padding-top: 3px;
     padding-left: 3px;
     width: 70%;
   }
-  #home #editor{
-    z-index: 0;
-    display: block;
-    padding-top: 66px;
-    width: 100%;
-  }
+
   #home #footer{
     display: block;
     font-size: 30px;

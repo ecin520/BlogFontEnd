@@ -9,8 +9,11 @@ import 'iview/dist/styles/iview.css'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 
+import marked from 'marked'
+
 Vue.use(iView)
 Vue.use(mavonEditor)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
