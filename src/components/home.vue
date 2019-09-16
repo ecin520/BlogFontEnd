@@ -1,21 +1,23 @@
 <template>
   <div id="home">
-    <div id="bar">
-        <ul>
+    <Layout>
+<!--      <Header style="background: white">-->
+        <div id="bar">
+          <ul>
             <li>
-                <i class="logo">
-                    <img src="@/assets/logo.png" alt="" />
-                </i>
+              <i class="logo">
+                <img src="@/assets/logo.png" alt="" />
+              </i>
             </li>
             <li><a class="bar-title" @click="fuck">个人主页</a></li>
             <li><a class="bar-title" @click="date" href="#">日志</a></li>
             <li><a class="bar-title" id="self" href="#">自我介绍</a></li>
             <li><a class="bar-title" id="help" href="#">帮助</a></li>
-<!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
+            <!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
             <li>
               <Poptip id="creation"
                       placement="bottom-end"
-                      width="200">
+                      width="190">
                 <a class="bar-title">Creation</a>
                 <div class="api" slot="content">
                   <Input v-model="key" size="small" type="textarea" placeholder="Input the private key"/><br>
@@ -26,45 +28,71 @@
                 </div>
               </Poptip>
             </li>
-        </ul>
-    </div>
-    <div id="content">
-      <Row>
-        <Col span="4">
-          <Card class="left-card">
-            <p slot="title">left card</p>
-            <p>Content of no border type. Content of no border type. Content of no border type. Content of no border type. </p>
-          </Card>
-        </Col>
-        <Col span="16">
-          <div id="demo"></div>
-        </Col>
-        <Col span="4">
-          <Card class="right-card">
-            <p slot="title">right card</p>
-            <p>Content of no border type. Content of no border type. Content of no border type. Content of no border type. </p>
-          </Card>
-        </Col>
-      </Row>
-
-    </div>
-    <div id="footer">
-
-    </div>
+          </ul>
+        </div>
+<!--      </Header>-->
+      <Layout id="side-content">
+        <Sider id="left-side">
+          <LeftSideCard></LeftSideCard>
+        </Sider>
+        <Content>
+          <div id="content">
+            <router-view/>
+<!--            <div id="demo"></div>-->
+          </div>
+        </Content>
+        <Sider id="right-side">
+          <Announcement></Announcement>
+          <br><br><br><br><br><br>
+          <RightLabel></RightLabel>
+        </Sider>
+      </Layout>
+      <Footer id="footer">
+        <Divider>Footer</Divider>
+        <Row>
+          <Col span="8">
+            <ul style="float: left;text-align: center;list-style-type: none;">
+              <li>作者其他平台</li><br>
+              <li><a href="https://github.com//ecin520"><Icon type="logo-github" /> github</a></li><br>
+              <li><a href="https://blog.csdn.net/ecin520"><Icon type="ios-paper-plane-outline" />CSDN</a></li><br>
+              <li><a><Icon type="ios-call" />Telphone</a></li><br>
+              <li><a><Icon type="ios-mail-outline" />Gmail</a></li><br>
+            </ul>
+          </Col>
+          <Col span="8">
+            <ul style="float: left;text-align: center;list-style-type: none;">
+              <li>推荐链接</li><br>
+              <li><a href="https://cn.vuejs.org/">Vue中文官网</a></li><br>
+              <li><a href="https://mvnrepository.com/">Maven</a></li><br>
+              <li><a href="https://spring.io/">Spring</a></li><br>
+              <li><a href="https://start.spring.io/">SpringBoot</a></li><br>
+            </ul>
+          </Col>
+          <Col span="8">
+            &nbsp;&nbsp;&nbsp;&nbsp;捐赠Alipay<br>
+            <img width="100px" src="@/assets/alipay.png"/>
+            <br>&nbsp;&nbsp;捐赠WeChat<br>
+            <img width="100px" src="@/assets/wechat.png"/>
+          </Col>
+        </Row>
+        <Row>
+          <Divider/>
+          <p style="text-align: center">@Edited by ENCode</p>
+        </Row>
+      </Footer>
+    </Layout>
   </div>
 </template>
 <script>
-  import Vue from "vue";
 
+  import LeftSideCard from '../components/sides/LeftSideCard'
+  import Announcement from '../components/sides/Announcement'
+  import RightLabel from '../components/sides/RightLabel'
   export default {
+    components: {Announcement, LeftSideCard,RightLabel},
     data(){
       return{
-        tables: '<Card  style="text-align: center;margin: 20px;"><p slot="title">个人博客搭建历程</p>\n' +
-          '<a>Content of no border type. Content of no border type. Content of no border type.' +
-          ' Content of no border type. </a>' +
-          '<img style="margin: auto;width: 150px;" src="https://file.iviewui.com/dist/2ecd3b0452aa197097d5131afacab7b8.png"/>' +
-          '<a href="https://www.baidu.com">百度一下，你就知道</a>' +
-          '</Card>'
+
       }
     },
     methods:{
@@ -73,17 +101,18 @@
         this.showContent=this.content;
       },
       date(){
-        var MyComponent = Vue.extend({
-          template: this.tables,
-          data(){
-            return{
-
-            }
-          }
-        });
-        var component = new MyComponent().$mount();
-        var dom = document.querySelector("#demo");
-        dom.appendChild(component.$el);
+        this.$router.push({name: 'article'})
+        // var MyComponent = Vue.extend({
+        //   template: this.tables,
+        //   data(){
+        //     return{
+        //
+        //     }
+        //   }
+        // });
+        // var component = new MyComponent().$mount();
+        // var dom = document.querySelector("#demo");
+        // dom.appendChild(component.$el);
       },
       enterClick(){
         if(this.key === ' '){
@@ -100,28 +129,44 @@
 
 </script>
 <style scoped>
-  @media screen and (max-width: 430px) {
+  @media screen and (max-width: 740px) {
     #home #bar ul li .bar-title{
-      font-size: 15px;
+      font-size: 16px;
     }
 
     #home #bar .logo img{
-      display: none;
+      /*display: none;*/
     }
 
-    #home #content .left-card{
-      display: none;
-    }
 
-    #home #content .right-card{
-      display: none;
-    }
-
-    #home #content #demo{
-      width: 400px;
+    #home #content{
+      margin: auto;
+      width: 415px;
       /*margin-left: 0px;*/
     }
+
+    #home #side-content #left-side{
+      display: none;
+    }
+
+    #home #side-content #right-side{
+      display: none;
+    }
+
+    #home #bar #help{
+      display: none;
+    }
+
+    #home #bar .logo{
+      display: none;
+    }
+
+    #home #bar ul li .bar-title{
+      padding: 6px;
+    }
+
   }
+  /*------------------border----------------------*/
   div {
     position: relative;
   }
@@ -135,7 +180,7 @@
     position: fixed;
     font-size: 16px;
     background: white;
-
+    left: 0;
   }
 
   #home #bar ul:hover{
@@ -150,24 +195,24 @@
     color: deepskyblue;
     font-family: "Microsoft YaHei UI",serif;
     display: block;
-    padding-top: 7px;
-    margin: 10px;
+    padding-top: 9px;
+    margin: 6px;
   }
   #home #bar ul li .bar-title:hover{
     text-shadow: 1px 1px 8px #20a0ed;
     transform: rotate(0deg);
-    transition: all 0.1s linear;
+    transition: all 0.05s linear;
     color: dodgerblue;
-    font-size: 18px;
+    font-size: 16px;
   }
   #home #bar ul li #creation{
     position: absolute;
     right: 20px;
   }
 
-  #home #bar .logo:hover{
+  /*#home #bar .logo:hover{*/
 
-  }
+  /*}*/
   #home #bar .logo img{
 
     padding-top: 3px;
@@ -175,27 +220,20 @@
     width: 70%;
   }
 
-  #home #footer{
-    display: block;
-    font-size: 30px;
-    position: relative;
-    z-index: 1;
-    padding-bottom: 0;
+  #home #side-content {
+    margin-top: 90px;
   }
 
-  #home #content{
-    padding-top: 80px;
+  #home #left-side{
+    background: none;
   }
 
-  #home #content .left-card{
-    margin-left: 10px;
-    margin-top: 50px;
+  #home #right-side{
+    /*margin-right: 10px;*/
+    background: none;
   }
 
-  #home #content .right-card{
-    margin-right: 10px;
-    margin-top: 50px;
-  }
+
 
 
 </style>

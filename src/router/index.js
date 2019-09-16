@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import home from '../components/home'
 import creation from '../components/creation/CreativeCenter'
 import CreateNotes from '../components/creation/CreateNotes'
+import article from '../components/content/Article'
+
 Vue.use(Router)
 
 export default new Router({
@@ -11,7 +13,14 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: home
+      component: home,
+      children: [
+        {
+          path: '/article',
+          name: 'article',
+          component: article
+        }
+      ]
     },
     {
       path: '/creation',

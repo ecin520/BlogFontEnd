@@ -19,12 +19,12 @@
               <Col span="12"><Button type="success" >编辑笔记</Button></Col>
             </Row><br>
             <Row>
-              <Col span="12"><Button type="error">等待开发</Button></Col>
-              <Col span="12"><Button type="error">等待开发</Button></Col>
+              <Col span="12"><Button type="error" disabled>等待开发</Button></Col>
+              <Col span="12"><Button type="error" disabled>等待开发</Button></Col>
             </Row><br>
             <Row>
-              <Col span="12"><Button type="error">等待开发</Button></Col>
-              <Col span="12"><Button type="error">等待开发</Button></Col>
+              <Col span="12"><Button type="error" disabled>等待开发</Button></Col>
+              <Col span="12"><Button type="error" disabled>等待开发</Button></Col>
             </Row><br>
           </Card>
         </Col><Col class="side-col" span="5"></Col>
@@ -56,7 +56,9 @@
   #CreativeCenter #show-card{
     /*background: linear-gradient(#7dc2ff, #fffffb);*/
     /*position: fixed;*/
-    padding: 50px 0;
+    padding: 150px 0;
+    margin: auto;
+    width: 500px;
     text-align: center;
   }
 
