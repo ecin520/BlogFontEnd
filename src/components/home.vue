@@ -70,11 +70,13 @@
             <br>&nbsp;&nbsp;捐赠WeChat<br>
             <img width="100px" src="@/assets/wechat.png"/>
           </Col>
-        </Row>
-        <Row>
           <Divider/>
           <p style="text-align: center">@Edited by ENCode</p>
         </Row>
+<!--        <Row>-->
+<!--          <Divider/>-->
+<!--          <p style="text-align: center">@Edited by ENCode</p>-->
+<!--        </Row>-->
       </Footer>
     </Layout>
 
@@ -110,10 +112,11 @@
     },
     methods:{
       fuck(){
-        this.$router.push('/ArticleList')
+        this.$router.push({path: '/ArticleList'})
+        // this.$router.go(0)
       },
       date(){
-        this.$router.push({name: 'ArticleList'})
+
       },
       enterClick(){
         this.ModalVisible = true
@@ -233,7 +236,7 @@
   }
 
   #home #side-content {
-    margin-top: 90px;
+    margin-top: 70px;
   }
 
   #home #left-side{
