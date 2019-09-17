@@ -6,27 +6,23 @@
           <ul>
             <li>
               <i class="logo">
-                <img src="@/assets/logo.png" alt="" />
+                <Icon size="57" type="logo-github" />
+<!--                <Icon size="56" type="logo-tux" />-->
+<!--                <img src="@/assets/logo.png" alt="" />-->
               </i>
             </li>
             <li><a class="bar-title" @click="fuck">个人主页</a></li>
             <li><a class="bar-title" @click="date" href="#">日志</a></li>
             <li><a class="bar-title" id="self" href="#">自我介绍</a></li>
             <li><a class="bar-title" id="help" href="#">帮助</a></li>
+            <li><Input class="bar-title" id="search" search placeholder="search" /></li>
             <!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
             <li>
-              <Poptip id="creation"
+              <div id="creation"
                       placement="bottom-end"
                       width="190">
-                <a class="bar-title">Creation</a>
-                <div class="api" slot="content">
-                  <Input v-model="key" size="small" type="textarea" placeholder="Input the private key"/><br>
-                  <a @click="enterClick" style="font-size: 20px">
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter
-                  </a>
-                </div>
-              </Poptip>
+                <a class="bar-title" @click="enterClick"><Icon size="40" type="ios-send-outline" /></a>
+              </div>
             </li>
           </ul>
         </div>
@@ -53,19 +49,19 @@
           <Col span="8">
             <ul style="float: left;text-align: center;list-style-type: none;">
               <li>作者其他平台</li><br>
-              <li><a href="https://github.com//ecin520"><Icon type="logo-github" /> github</a></li><br>
-              <li><a href="https://blog.csdn.net/ecin520"><Icon type="ios-paper-plane-outline" />CSDN</a></li><br>
-              <li><a><Icon type="ios-call" />Telphone</a></li><br>
-              <li><a><Icon type="ios-mail-outline" />Gmail</a></li><br>
+              <li><a href="https://github.com//ecin520" target="_blank"><Icon size="24" type="logo-github" /> github</a></li><br>
+              <li><a href="https://blog.csdn.net/ecin520" target="_blank"><Icon size="24" type="ios-paper-plane-outline" />CSDN</a></li><br>
+              <li><a target="_blank"><Icon size="24" type="ios-call" />Telphone</a></li><br>
+              <li><a target="_blank"><Icon size="24" type="ios-mail-outline" />Gmail</a></li><br>
             </ul>
           </Col>
           <Col span="8">
             <ul style="float: left;text-align: center;list-style-type: none;">
               <li>推荐链接</li><br>
-              <li><a href="https://cn.vuejs.org/">Vue中文官网</a></li><br>
-              <li><a href="https://mvnrepository.com/">Maven</a></li><br>
-              <li><a href="https://spring.io/">Spring</a></li><br>
-              <li><a href="https://start.spring.io/">SpringBoot</a></li><br>
+              <li><a href="https://cn.vuejs.org/" target="_blank">Vue中文官网</a></li><br>
+              <li><a href="https://mvnrepository.com/" target="_blank">Maven</a></li><br>
+              <li><a href="https://spring.io/" target="_blank">Spring</a></li><br>
+              <li><a href="https://start.spring.io/" target="_blank">SpringBoot</a></li><br>
             </ul>
           </Col>
           <Col span="8">
@@ -81,6 +77,19 @@
         </Row>
       </Footer>
     </Layout>
+
+    <Modal
+      v-model="ModalVisible"
+      :closable="false"
+      :loading="loading"
+      :styles="{width: '280px',top: '190px'}"
+      footer-hide>
+      <h3 style="text-align: center"><Icon size="50" type="md-key" />At the Modal,input the private key to entry the editor.</h3><br>
+        <Input type="textarea" placeholder="private key"/><br><br>
+        <a @click="entryEditor" style="margin-left: 100px;"><Icon  size="40" type="md-checkmark" /></a>
+    </Modal>
+
+
   </div>
 </template>
 <script>
@@ -92,34 +101,25 @@
     components: {Announcement, LeftSideCard,RightLabel},
     data(){
       return{
-
+        ModalVisible: false,
+        QQModalVisible: false,
+        tempData: [
+          1,2,3,4,5
+        ]
       }
     },
     methods:{
       fuck(){
-        alert(this.content)
-        this.showContent=this.content;
+        this.$router.push('/ArticleList')
       },
       date(){
-        this.$router.push({name: 'article'})
-        // var MyComponent = Vue.extend({
-        //   template: this.tables,
-        //   data(){
-        //     return{
-        //
-        //     }
-        //   }
-        // });
-        // var component = new MyComponent().$mount();
-        // var dom = document.querySelector("#demo");
-        // dom.appendChild(component.$el);
+        this.$router.push({name: 'ArticleList'})
       },
       enterClick(){
-        if(this.key === ' '){
-          this.$router.push({path: '/creation'});
-        }
-        else
-          alert('error go away')
+        this.ModalVisible = true
+      },
+      entryEditor(){
+        this.$router.push({path: '/creation'});
       }
     },
     mounted() {
@@ -165,6 +165,10 @@
       padding: 6px;
     }
 
+    #home #bar #search{
+      display: none;
+    }
+
   }
   /*------------------border----------------------*/
   div {
@@ -183,6 +187,13 @@
     left: 0;
   }
 
+  #home #bar #search{
+    position: absolute;
+    width: 20%;
+    right: 200px;
+    margin-top: 2px;
+  }
+
   #home #bar ul:hover{
     transition: all 0.2s linear;
     box-shadow: 0 2px 5px #b4b4b4;
@@ -195,7 +206,7 @@
     color: deepskyblue;
     font-family: "Microsoft YaHei UI",serif;
     display: block;
-    padding-top: 9px;
+    padding-top: 12px;
     margin: 6px;
   }
   #home #bar ul li .bar-title:hover{
@@ -207,6 +218,7 @@
   }
   #home #bar ul li #creation{
     position: absolute;
+    top: -7px;
     right: 20px;
   }
 

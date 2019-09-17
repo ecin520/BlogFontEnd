@@ -4,7 +4,8 @@ import Router from 'vue-router'
 import home from '../components/home'
 import creation from '../components/creation/CreativeCenter'
 import CreateNotes from '../components/creation/CreateNotes'
-import article from '../components/content/Article'
+import ArticleList from '../components/content/ArticleList'
+import ArticleCard from '../components/content/ArticleCard'
 
 Vue.use(Router)
 
@@ -16,9 +17,14 @@ export default new Router({
       component: home,
       children: [
         {
-          path: '/article',
-          name: 'article',
-          component: article
+          path: '/ArticleList',
+          name: 'ArticleList',
+          component: ArticleList
+        },
+        {
+          path: '/ArticleCard',
+          name: 'ArticleCard',
+          component: ArticleCard
         }
       ]
     },
