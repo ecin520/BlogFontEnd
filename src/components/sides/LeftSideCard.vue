@@ -64,7 +64,7 @@
     position: -webkit-sticky;
     position: sticky;
     top: 65px;
-    z-index: 888;
+    z-index: 0;
   }
   .left-card img{
     width: 90%;

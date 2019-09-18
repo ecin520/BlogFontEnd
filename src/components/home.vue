@@ -14,7 +14,7 @@
             <li><a class="bar-title" @click="fuck">个人主页</a></li>
             <li><a class="bar-title" @click="date" href="#">日志</a></li>
             <li><a class="bar-title" id="self" href="#">自我介绍</a></li>
-            <li><a class="bar-title" id="help" href="#">帮助</a></li>
+            <li><a class="bar-title" @click="help" id="help" href="#">帮助</a></li>
             <li><Input class="bar-title" id="search" search placeholder="search" /></li>
             <!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
             <li>
@@ -99,6 +99,8 @@
   import LeftSideCard from '../components/sides/LeftSideCard'
   import Announcement from '../components/sides/Announcement'
   import RightLabel from '../components/sides/RightLabel'
+
+  import https from '../https'
   export default {
     components: {Announcement, LeftSideCard,RightLabel},
     data(){
@@ -112,7 +114,8 @@
     },
     methods:{
       fuck(){
-        this.$router.push({path: '/ArticleList'})
+        this.$router.push({path: '/ArticleList'});
+        document.getElementById("bar").scrollIntoView();
         // this.$router.go(0)
       },
       date(){
@@ -123,6 +126,11 @@
       },
       entryEditor(){
         this.$router.push({path: '/creation'});
+      },
+      help(){
+        https.doGet('http://localhost:8081/user/getAllUsers').then((data)=>{
+          alert(data.data)
+        });
       }
     },
     mounted() {

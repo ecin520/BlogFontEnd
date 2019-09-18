@@ -28,6 +28,15 @@ Vue.directive('highlight',function (el) {
 
 import marked from 'marked'
 
+// import axios from 'axios'
+// import QS from 'qs';
+//
+// Vue.prototype.$axios = axios
+// Vue.prototype.qs = QS
+
+//使用全局axios请求
+// import https from './https'
+
 Vue.use(iView)
 Vue.use(mavonEditor)
 
