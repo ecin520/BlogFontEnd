@@ -86,6 +86,7 @@
     methods:{
       entryArticle(item){
         this.$router.push({name: 'ArticleCard',params: {id: item.id}})
+        document.getElementById("bar").scrollIntoView();
       }
     }
   }

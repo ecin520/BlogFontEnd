@@ -44,8 +44,8 @@
         </Sider>
       </Layout>
       <Footer id="footer">
-        <Divider>Footer</Divider>
-        <Row>
+        <Divider/>
+<!--        <Row>-->
           <Col span="8">
             <ul style="float: left;text-align: center;list-style-type: none;">
               <li>作者其他平台</li><br>
@@ -70,9 +70,9 @@
             <br>&nbsp;&nbsp;捐赠WeChat<br>
             <img width="100px" src="@/assets/wechat.png"/>
           </Col>
-          <Divider/>
-          <p style="text-align: center">@Edited by ENCode</p>
-        </Row>
+<!--          <Divider/>-->
+<!--          <p style="text-align: center">@Edited by ENCode</p>-->
+<!--        </Row>-->
 <!--        <Row>-->
 <!--          <Divider/>-->
 <!--          <p style="text-align: center">@Edited by ENCode</p>-->
@@ -116,7 +116,7 @@
         // this.$router.go(0)
       },
       date(){
-
+        this.$router.push({path: '/ArticleList'})
       },
       enterClick(){
         this.ModalVisible = true
@@ -127,12 +127,25 @@
     },
     mounted() {
       this.date();
+    },
+    created() {
+      this.date();
     }
   }
 
 </script>
 <style scoped>
-  @media screen and (max-width: 740px) {
+  @media screen and (max-width: 800px){
+    #home #side-content #left-side{
+      display: none;
+    }
+    #home #content{
+      margin: auto;
+      width: 515px;
+      /*margin-left: 0px;*/
+    }
+  }
+  @media screen and (max-width: 720px) {
     #home #bar ul li .bar-title{
       font-size: 16px;
     }
