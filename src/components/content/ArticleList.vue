@@ -7,7 +7,7 @@
           <a style="color: #cc7edc;"><Icon size="23" type="md-calendar" />2019/9/17 &nbsp;&nbsp;</a>
           <a style="color: #cc7edc;"><Icon size="23" type="md-copy" />Java &nbsp;&nbsp;</a>
           <a style="color: #cc7edc;"><Icon size="23" type="ios-git-branch" />Spring &nbsp;&nbsp;</a><br><br>
-          <img style="margin-left: 150px;width: 150px;" :src="item.image"/>
+          <img style="margin-right: 0px;width: 150px;" :src="item.image"/>
           <Divider/>
         </Card>
       </div>

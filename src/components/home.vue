@@ -128,9 +128,13 @@
         this.$router.push({path: '/creation'});
       },
       help(){
-        https.doGet('http://localhost:8081/user/getAllUsers').then((data)=>{
+
+        let params = {'username': '100'};
+        https.doGet('/api/user/getPassword',params).then((data)=>{
           alert(data.data)
-        });
+        }).catch(err=>{
+          console.log(err)
+        })
       }
     },
     mounted() {
@@ -143,13 +147,22 @@
 
 </script>
 <style scoped>
+  /*@media screen and (max-width: 420px){*/
+  /*  #home #content{*/
+  /*    margin: auto;*/
+  /*    width: 310px;*/
+  /*    !*margin-left: 0px;*!*/
+  /*  }*/
+  /*}*/
+
   @media screen and (max-width: 800px){
     #home #side-content #left-side{
       display: none;
     }
     #home #content{
       margin: auto;
-      width: 515px;
+      /*width: 515px;*/
+      width: 100%;
       /*margin-left: 0px;*/
     }
   }
@@ -165,7 +178,8 @@
 
     #home #content{
       margin: auto;
-      width: 415px;
+      /*width: 415px;*/
+      width: 100%;
       /*margin-left: 0px;*/
     }
 
