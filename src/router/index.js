@@ -22,7 +22,7 @@ export default new Router({
           component: ArticleList
         },
         {
-          path: '/ArticleCard',
+          path: '/ArticleCard/:id',
           name: 'ArticleCard',
           component: ArticleCard
         }

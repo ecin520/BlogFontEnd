@@ -33,6 +33,7 @@
         </Sider>
         <Content>
           <div id="content">
+<!--            <ArticleList></ArticleList>-->
             <router-view/>
 <!--            <div id="demo"></div>-->
           </div>
@@ -100,9 +101,11 @@
   import Announcement from '../components/sides/Announcement'
   import RightLabel from '../components/sides/RightLabel'
 
+  import ArticleList from '../components/content/ArticleList'
+
   import https from '../https'
   export default {
-    components: {Announcement, LeftSideCard,RightLabel},
+    components: {Announcement, LeftSideCard,RightLabel,ArticleList},
     data(){
       return{
         ModalVisible: false,
@@ -129,19 +132,13 @@
       },
       help(){
 
-        let params = {'username': '100'};
-        https.doGet('/api/user/getPassword',params).then((data)=>{
-          alert(data.data)
-        }).catch(err=>{
-          console.log(err)
-        })
       }
     },
     mounted() {
-      this.date();
+      // this.date();
     },
     created() {
-      this.date();
+      // this.date();
     }
   }
 
