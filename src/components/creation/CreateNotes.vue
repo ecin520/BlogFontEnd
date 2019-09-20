@@ -4,7 +4,7 @@
 <!--    <Input class="title-input" size="large" v-model="article_title" placeholder="Input the title" />-->
     <mavon-editor
       class="editor"
-      v-model = "content"
+      v-model = "article.content"
       @imgAdd = "$imgAdd"
       :toolbars = "toolbars"
       :ishljs = "true"
@@ -63,7 +63,7 @@
       :z-index="10001"
       :styles="{width: '230px',top: '220px'}"
       footer-hide>
-      <RadioGroup v-model="typeGoup">
+      <RadioGroup v-model="article.type_name">
         <Radio v-for="typeName in typeNameGroup" :label="typeName.type_name"></Radio>
       </RadioGroup>
     </Modal>
@@ -75,81 +75,104 @@
       :z-index="10009"
       :styles="{width: '230px',top: '220px'}"
       footer-hide>
-<!--      <RadioGroup v-model="branchGoup">-->
-<!--        <Radio v-for="branchName in branchNameGroup" :label="branchName.branch_name"></Radio>-->
-<!--      </RadioGroup>-->
-      <CheckboxGroup style="" v-model="branchGroup">
-        <Checkbox v-for="branchName in branchNameGroup" :label="branchName.branch_name">
-<!--          <Icon type="logo-twitter"></Icon>-->
-          <span>{{branchName.branch_name}}</span>
-        </Checkbox>
-      </CheckboxGroup>
+      <RadioGroup v-model="article.branch_name">
+        <Radio v-for="branchName in branchNameGroup" :label="branchName.branch_name"></Radio>
+      </RadioGroup>
+<!--      <CheckboxGroup style="" v-model="branchGroup">-->
+<!--        <Checkbox v-for="branchName in branchNameGroup" :label="branchName.branch_name">-->
+<!--&lt;!&ndash;          <Icon type="logo-twitter"></Icon>&ndash;&gt;-->
+<!--          <span>{{branchName.branch_name}}</span>-->
+<!--        </Checkbox>-->
+<!--      </CheckboxGroup>-->
     </Modal>
 
   </div>
 </template>
 
 <script>
-    export default {
-      data(){
-        return{
-          article_title: '',
-          noteModalVisible: false,
-          typeModalVisible: false,
-          branchModalVisible: false,
-          article: [
-            {
-              'title': '',
-              'generalize': '',
-              'content': '',
-              'article_url': '',
-              'type_name': '',
-              'branch_name': '',
-              'show_image': ''
-            }
-          ],
-          typeNameGroup: [
-            {
-              'type_name': 'Java'
-            },
-            {
-              'type_name': 'Python'
-            },
-            {
-              'type_name': 'C++'
-            }
-          ],
-          branchNameGroup: [
-            {
-              'branch_name': '反射'
-            },
-            {
-              'branch_name': '集合'
-            },
-            {
-              'branch_name': '非阻塞IO'
-            }
-          ]
-        }
-      },
-      methods: {
-        SaveContent(value,render){
-          this.noteModalVisible = true
-        },
-        submitForm(){
-          alert(this.article.title)
-        },
-        selectTypeName(){
-          this.typeModalVisible = true;
-        },
-        selectBranchName(){
-          this.branchModalVisible = true;
-        }
-      },
-      created() {
-        // this.noteModalVisible = true
+  import https from '@/https.js'
+  export default {
+    data(){
+      return{
+        article_title: '',
+        noteModalVisible: false,
+        typeModalVisible: false,
+        branchModalVisible: false,
+        article: [
+          {
+            'title': '',
+            'generalize': '',
+            'content': '',
+            'article_url': '',
+            'type_name': '',
+            'branch_name': '',
+            'show_image': ''
+          }
+        ],
+        typeNameGroup: [
+          {
+            'type_name': 'Java'
+          },
+          {
+            'type_name': 'Python'
+          },
+          {
+            'type_name': 'C++'
+          }
+        ],
+        branchNameGroup: [
+          {
+            'branch_name': '反射'
+          },
+          {
+            'branch_name': '集合'
+          },
+          {
+            'branch_name': '非阻塞IO'
+          }
+        ]
       }
+    },
+    methods: {
+      SaveContent(value,render){
+        this.noteModalVisible = true
+      },
+      submitForm(){
+/*        'title': '',
+          'generalize': '',
+          'content': '',
+          'article_url': '',
+          'type_name': '',
+          'branch_name': '',
+          'show_image': ''*/
+        let params = new FormData();
+        params.append('title', this.article.title);
+        params.append('generalize', this.article.generalize);
+        params.append('content', this.article.content);
+        params.append('article_url', this.article.article_url);
+        params.append('type_name', this.article.type_name);
+        params.append('branch_name', this.article.branch_name);
+        params.append('show_image', this.article.show_image);
+
+        https.doGet('/api/article/insertArticle',params).then((data)=>{
+          if(data === null)
+            alert('Oh no')
+        }).catch(err=>{
+          console.log(err)
+        });
+
+      },
+      selectTypeName(){
+        this.typeModalVisible = true;
+      },
+      selectBranchName(){
+        this.branchModalVisible = true;
+      }
+    },
+    created() {
+      // this.noteModalVisible = true
     }
+  }
 </script>
 
 <style scoped>
