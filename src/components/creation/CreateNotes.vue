@@ -6,6 +6,7 @@
       class="editor"
       v-model = "article.content"
       @imgAdd = "$imgAdd"
+      ref="md"
       :toolbars = "toolbars"
       :ishljs = "true"
       :tabSize = 4
@@ -90,7 +91,8 @@
 </template>
 
 <script>
-  import https from '@/https.js'
+  // import https from '@/https.js'
+  import {mavonEditor} from 'mavon-editor'
   export default {
     data(){
       return{
@@ -111,24 +113,14 @@
         ],
         typeNameGroup: [
           {
-            'type_name': 'Java'
-          },
-          {
-            'type_name': 'Python'
-          },
-          {
-            'type_name': 'C++'
+            'type_name': '',
+            'type_url': ''
           }
         ],
         branchNameGroup: [
           {
-            'branch_name': '反射'
-          },
-          {
-            'branch_name': '集合'
-          },
-          {
-            'branch_name': '非阻塞IO'
+            'branch_name': '',
+            'branch_url': ''
           }
         ]
       }
@@ -138,30 +130,6 @@
         this.noteModalVisible = true
       },
       submitForm(){
-/*        'title': '',
-          'generalize': '',
-          'content': '',
-          'article_url': '',
-          'type_name': '',
-          'branch_name': '',
-          'show_image': ''*/
-        // let params = {
-        //   title: this.article.title,
-        //   generalize: this.article.generalize,
-        //   content: this.article.content,
-        //   article_url: this.article.article_url,
-        //   type_name: this.article.type_name,
-        //   branch_name: this.article.branch_name,
-        //   show_image: this.article.show_image
-        // };
-        // let params = new FormData();
-        // params.append('title', this.article.title);
-        // params.append('generalize', this.article.generalize);
-        // params.append('content', this.article.content);
-        // params.append('article_url', this.article.article_url);
-        // params.append('type_name', this.article.type_name);
-        // params.append('branch_name', this.article.branch_name);
-        // params.append('show_image', this.article.show_image);
 
         this.$axios({
           url: '/api/article/insertArticle',
@@ -191,10 +159,43 @@
 
       },
       selectTypeName(){
+
+        this.$axios({
+          url: '/api/type/selectAllType',
+          method: 'get'
+        }).then(response=>{
+          this.typeNameGroup=response.data
+        }).catch(error=>{
+          alert(error)
+        });
         this.typeModalVisible = true;
+
       },
       selectBranchName(){
+
+        this.$axios({
+          url: '/api/branch/selectAllBranch',
+          method: 'get'
+        }).then(response=>{
+          this.branchNameGroup=response.data
+        }).catch(error=>{
+          alert(error)
+        });
         this.branchModalVisible = true;
+
+      },
+      $imgAdd(pos,$file){
+        var formdata = new FormData();
+        formdata.append('file',$file);
+        this.$axios({
+          url: '/api/fileUpload/imageUpload',
+          method: 'post',
+          data: formdata,
+          headers: { 'Content-Type': 'multipart/form-data' }
+        }).then(response=>{
+          alert(response.data);
+          $mv.$img2Url(pos,url);
+        });
       }
     },
     created() {

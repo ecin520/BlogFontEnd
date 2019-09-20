@@ -7,7 +7,7 @@
           <a style="color: #cc7edc;"><Icon size="23" type="md-calendar" />{{item.time}} &nbsp;&nbsp;</a>
           <a style="color: #cc7edc;"><Icon size="23" type="md-copy" />{{item.type_name}} &nbsp;&nbsp;</a>
           <a style="color: #cc7edc;"><Icon size="23" type="ios-git-branch" />{{item.branch_name}} &nbsp;&nbsp;</a><br><br>
-          <img style="margin-right: 0px;width: 150px;" :src="item.show_image"/>
+          <img style="margin-right: 0;width: 150px;" :src="item.show_image" alt="" />
           <Divider/>
         </Card>
       </div>
@@ -46,7 +46,7 @@
         url: '/api/article/getAllArticle',
         method: 'get'
       }).then(response=>{
-        this.article = response.data
+        this.article = response.data;
       }).catch(error=>{
         alert(error);
       });

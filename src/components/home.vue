@@ -251,7 +251,7 @@
   #home #bar ul li .bar-title:hover{
     text-shadow: 1px 1px 8px #20a0ed;
     transform: rotate(0deg);
-    transition: all 0.05s linear;
+    transition: all 0.01s linear;
     color: dodgerblue;
     font-size: 16px;
   }
