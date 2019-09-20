@@ -37,7 +37,7 @@
           smartLists: true,
           smartypants: false
         });
-        this.article_html = marked(data.data.generalize,{sanitize: true});
+        this.article_html = marked(data.data.content,{sanitize: true});
       }).catch(err=>{
         console.log(err)
       });

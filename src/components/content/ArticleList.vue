@@ -25,6 +25,7 @@
             id: '201909171601',
             title: '个人博客搭建历程-置顶',
             generalize: '本个人博客项目启动时间为2019年9月14日，基本完工于2019年9月20日，前端使用vue.js框架，后端使用ssm(Spring+Spring MVC+MyBatis)整合框架......',
+            content: '',
             time: '2019/9/17',
             type_name: 'Java',
             branch_name: 'Spring',
@@ -85,7 +86,7 @@
     methods:{
       entryArticle(item){
         this.$router.push({name: 'ArticleCard',params: {id: item.id}});
-        document.getElementById("bar").scrollIntoView();
+        // document.getElementById("bar").scrollIntoView();
       }
     },
     created() {
