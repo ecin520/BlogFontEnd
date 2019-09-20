@@ -145,21 +145,48 @@
           'type_name': '',
           'branch_name': '',
           'show_image': ''*/
-        let params = new FormData();
-        params.append('title', this.article.title);
-        params.append('generalize', this.article.generalize);
-        params.append('content', this.article.content);
-        params.append('article_url', this.article.article_url);
-        params.append('type_name', this.article.type_name);
-        params.append('branch_name', this.article.branch_name);
-        params.append('show_image', this.article.show_image);
+        // let params = {
+        //   title: this.article.title,
+        //   generalize: this.article.generalize,
+        //   content: this.article.content,
+        //   article_url: this.article.article_url,
+        //   type_name: this.article.type_name,
+        //   branch_name: this.article.branch_name,
+        //   show_image: this.article.show_image
+        // };
+        // let params = new FormData();
+        // params.append('title', this.article.title);
+        // params.append('generalize', this.article.generalize);
+        // params.append('content', this.article.content);
+        // params.append('article_url', this.article.article_url);
+        // params.append('type_name', this.article.type_name);
+        // params.append('branch_name', this.article.branch_name);
+        // params.append('show_image', this.article.show_image);
 
-        https.doGet('/api/article/insertArticle',params).then((data)=>{
-          if(data === null)
-            alert('Oh no')
-        }).catch(err=>{
-          console.log(err)
-        });
+        this.$axios({
+          url: '/api/article/insertArticle',
+          method: 'post',
+          data: {
+            title: this.article.title,
+            generalize: this.article.generalize,
+            content: this.article.content,
+            article_url: this.article.article_url,
+            type_name: this.article.type_name,
+            branch_name: this.article.branch_name,
+            show_image: this.article.show_image
+          }
+        }).then(response=>{
+          alert('success')
+        }).catch(error=>{
+          alert(error)
+        })
+
+        // https.doPost('/api/article/insertArticle',{params}).then((data)=>{
+        //   if(data === null)
+        //     alert('Oh no')
+        // }).catch(err=>{
+        //   alert(err)
+        // });
 
       },
       selectTypeName(){

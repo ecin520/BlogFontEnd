@@ -28,11 +28,11 @@ Vue.directive('highlight',function (el) {
 
 import marked from 'marked'
 
-// import axios from 'axios'
-// import QS from 'qs';
-//
-// Vue.prototype.$axios = axios
-// Vue.prototype.qs = QS
+import axios from 'axios';
+import qs from 'qs';
+
+Vue.prototype.$axios = axios;
+Vue.prototype.$qs = qs;
 
 //使用全局axios请求
 // import https from './https'

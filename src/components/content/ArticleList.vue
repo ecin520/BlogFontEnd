@@ -7,7 +7,7 @@
           <a style="color: #cc7edc;"><Icon size="23" type="md-calendar" />{{item.time}} &nbsp;&nbsp;</a>
           <a style="color: #cc7edc;"><Icon size="23" type="md-copy" />{{item.type_name}} &nbsp;&nbsp;</a>
           <a style="color: #cc7edc;"><Icon size="23" type="ios-git-branch" />{{item.branch_name}} &nbsp;&nbsp;</a><br><br>
-          <img style="margin-right: 0px;width: 150px;" :src="item.image"/>
+          <img style="margin-right: 0px;width: 150px;" :src="item.show_image"/>
           <Divider/>
         </Card>
       </div>
@@ -29,7 +29,7 @@
             time: '2019/9/17',
             type_name: 'Java',
             branch_name: 'Spring',
-            image: 'https://file.iviewui.com/dist/2ecd3b0452aa197097d5131afacab7b8.png',
+            show_image: '',
             article_url: ''
           },
           // {
@@ -90,11 +90,19 @@
       }
     },
     created() {
-      https.doGet('/api/article/getAllArticle').then((data)=>{
-        this.article = data.data
-      }).catch(err=>{
-        console.log(err)
-      })
+      this.$axios({
+        url: '/api/article/getAllArticle',
+        method: 'get'
+      }).then(response=>{
+        this.article = response.data
+      }).catch(error=>{
+        alert(error);
+      });
+      // https.doGet('/api/article/getAllArticle').then((data)=>{
+      //   this.article = data.data
+      // }).catch(err=>{
+      //   console.log(err)
+      // })
     }
   }
 </script>

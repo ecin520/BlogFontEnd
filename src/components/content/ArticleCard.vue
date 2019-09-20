@@ -25,22 +25,45 @@
 
     },
     mounted() {
-      let params = {'id': this.$route.params.id};
-      https.doGet('/api/article/getArticleById',params).then((data)=>{
-        marked.setOptions({
-          renderer: this.article_html,
-          gfm: true,
-          tables: true,
-          breaks: false,
-          pedantic: false,
-          sanitize: false,
-          smartLists: true,
-          smartypants: false
-        });
-        this.article_html = marked(data.data.content,{sanitize: true});
-      }).catch(err=>{
-        console.log(err)
-      });
+      // let params = {'id': this.$route.params.id};
+      let params = new FormData();
+      params.append('id',this.$route.params.id);
+      // https.doGet('/api/article/getArticleById',params).then((data)=>{
+      //   marked.setOptions({
+      //     renderer: this.article_html,
+      //     gfm: true,
+      //     tables: true,
+      //     breaks: false,
+      //     pedantic: false,
+      //     sanitize: false,
+      //     smartLists: true,
+      //     smartypants: false
+      //   });
+      //   this.article_html = marked(data.data.content,{sanitize: true});
+      // }).catch(err=>{
+      //   console.log(err)
+      // });
+      this.$axios({
+        url: '/api/article/getArticleById',
+        method: 'post',
+        params: {
+          id: this.$route.params.id
+        }
+      }).then(response=>{
+          marked.setOptions({
+            renderer: this.article_html,
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: false,
+            smartLists: true,
+            smartypants: false
+          });
+          this.article_html = marked(response.data.content,{sanitize: true});
+      }).catch(error=>{
+        alert(error)
+      })
     }
   }
 </script>
