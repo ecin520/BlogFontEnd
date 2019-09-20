@@ -177,6 +177,7 @@
           }
         }).then(response=>{
           alert('success')
+          this.$router.push({path: '/ArticleList'});
         }).catch(error=>{
           alert(error)
         })

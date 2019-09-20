@@ -1,6 +1,6 @@
 <template>
   <div id="ArticleCard">
-    <Card>
+    <Card style="border-radius:13px;">
       <div v-highlight class="markdown-body" v-html="article_html"></div>
     </Card>
   </div>
@@ -72,7 +72,7 @@
   #ArticleCard{
     margin: 21px;
   }
-  #ArticleCard .markdown-body{
-
+  pre{
+    background: #52c41a;
   }
 </style>

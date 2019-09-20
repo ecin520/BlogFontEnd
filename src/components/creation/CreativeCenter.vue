@@ -1,9 +1,9 @@
 <template>
   <div id="CreativeCenter">
     <div>
-      <Card>
-        <a href="">Go Home</a>
-      </Card>
+<!--      <Card>-->
+<!--        <a href="http://localhost:8080/#/ArticleList" target="_blank">Go Home</a>-->
+<!--      </Card>-->
     </div>
     <div id="show-card">
       <Row>

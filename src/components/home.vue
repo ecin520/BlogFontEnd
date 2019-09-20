@@ -89,10 +89,10 @@
       footer-hide>
       <h3 style="text-align: center"><Icon size="50" type="md-key" />At the Modal,input the private key to entry the editor.</h3><br>
         <Input type="textarea" placeholder="private key"/><br><br>
-        <a @click="entryEditor" style="margin-left: 100px;"><Icon  size="40" type="md-checkmark" /></a>
+        <a @click="entryEditor" style="margin-left: 40%;"><Icon  size="40" type="md-checkmark" /></a>
     </Modal>
 
-
+<!--    <a class="go-top" href="#top"><Icon size="50" type="ios-arrow-dropup-circle" /></a>-->
   </div>
 </template>
 <script>
@@ -162,6 +162,7 @@
       width: 100%;
       /*margin-left: 0px;*/
     }
+
   }
   @media screen and (max-width: 720px) {
     #home #bar ul li .bar-title{
@@ -204,6 +205,9 @@
       display: none;
     }
 
+    #home .go-top{
+      display: none;
+    }
   }
   /*------------------border----------------------*/
   div {
@@ -280,7 +284,11 @@
     background: none;
   }
 
-
-
+  #home .go-top{
+    position: fixed;
+    bottom: 10px;
+    right: 70px;
+    color: #52c41a;
+  }
 
 </style>

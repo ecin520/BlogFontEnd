@@ -1,5 +1,5 @@
 <template>
-  <Card class="left-card">
+  <Card class="left-card"  style="border-radius:13px;">
     <Row>
       <Col span="14">
         <img :src="QQImg"/>
