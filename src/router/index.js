@@ -6,8 +6,14 @@ import creation from '../components/creation/CreativeCenter'
 import CreateNotes from '../components/creation/CreateNotes'
 import ArticleList from '../components/content/ArticleList'
 import ArticleCard from '../components/content/ArticleCard'
+import Archive from '../components/date/Archive'
+import TypeArchive from '../components/date/TypeArchive'
+import BranchArchive from '../components/date/BranchArchive'
+import DeleteArticle from '../components/operating/DeleteArticle'
+import Self from '../components/relax/Self'
+import Tips from '../components/help/Tips'
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
@@ -25,6 +31,31 @@ export default new Router({
           path: '/ArticleCard/:id',
           name: 'ArticleCard',
           component: ArticleCard
+        },
+        {
+          path: '/Archive',
+          name: 'Archive',
+          component: Archive
+        },
+        {
+          path: '/TypeArchive/:id',
+          name: 'TypeArchive',
+          component: TypeArchive
+        },
+        {
+          path: '/BranchArchive/:id',
+          name: 'BranchArchive',
+          component: BranchArchive
+        },
+        {
+          path: '/Self',
+          name: 'Self',
+          component: Self
+        },
+        {
+          path: '/Tips',
+          name: 'Tips',
+          component: Tips
         }
       ]
     },
@@ -37,6 +68,11 @@ export default new Router({
       path: '/CreateNotes',
       name: 'CreateNotes',
       component: CreateNotes
+    },
+    {
+      path: '/DeleteArticle',
+      name: 'DeleteArticle',
+      component: DeleteArticle
     }
   ]
 })

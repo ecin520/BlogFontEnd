@@ -1,6 +1,6 @@
 <template>
   <div id="ArticleCard">
-    <Card style="border-radius:13px;">
+    <Card style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
       <div v-highlight class="markdown-body" v-html="article_html"></div>
     </Card>
   </div>
@@ -12,6 +12,7 @@
   import 'highlight.js/styles/monokai-sublime.css';
 
   import https from '@/https.js'
+
 
   export default {
     data(){
@@ -25,24 +26,8 @@
 
     },
     mounted() {
-      // let params = {'id': this.$route.params.id};
       let params = new FormData();
       params.append('id',this.$route.params.id);
-      // https.doGet('/api/article/getArticleById',params).then((data)=>{
-      //   marked.setOptions({
-      //     renderer: this.article_html,
-      //     gfm: true,
-      //     tables: true,
-      //     breaks: false,
-      //     pedantic: false,
-      //     sanitize: false,
-      //     smartLists: true,
-      //     smartypants: false
-      //   });
-      //   this.article_html = marked(data.data.content,{sanitize: true});
-      // }).catch(err=>{
-      //   console.log(err)
-      // });
       this.$axios({
         url: '/api/article/getArticleById',
         method: 'post',
@@ -62,7 +47,7 @@
           });
           this.article_html = marked(response.data.content,{sanitize: true});
       }).catch(error=>{
-        alert(error)
+        this.$Message.error(error)
       })
     }
   }
@@ -72,7 +57,7 @@
   #ArticleCard{
     margin: 21px;
   }
-  pre{
-    background: #52c41a;
+  .markdown-body pre{
+
   }
 </style>

@@ -65,7 +65,7 @@
       :styles="{width: '230px',top: '220px'}"
       footer-hide>
       <RadioGroup v-model="article.type_name">
-        <Radio v-for="typeName in typeNameGroup" :label="typeName.type_name"></Radio>
+        <Radio v-for="typeName in typeNameGroup" :label="typeName.type_name" :key="typeName.type_name.index"></Radio>
       </RadioGroup>
     </Modal>
 
@@ -77,7 +77,7 @@
       :styles="{width: '230px',top: '220px'}"
       footer-hide>
       <RadioGroup v-model="article.branch_name">
-        <Radio v-for="branchName in branchNameGroup" :label="branchName.branch_name"></Radio>
+        <Radio v-for="branchName in branchNameGroup" :label="branchName.branch_name" :key="branchName.branch_name.index"></Radio>
       </RadioGroup>
 <!--      <CheckboxGroup style="" v-model="branchGroup">-->
 <!--        <Checkbox v-for="branchName in branchNameGroup" :label="branchName.branch_name">-->
@@ -144,10 +144,10 @@
             show_image: this.article.show_image
           }
         }).then(response=>{
-          alert('success')
+          this.$Message.success('提交成功')
           this.$router.push({path: '/ArticleList'});
         }).catch(error=>{
-          alert(error)
+          this.$Message.error('Error')
         })
 
         // https.doPost('/api/article/insertArticle',{params}).then((data)=>{
@@ -166,7 +166,7 @@
         }).then(response=>{
           this.typeNameGroup=response.data
         }).catch(error=>{
-          alert(error)
+          this.$Message.error(error)
         });
         this.typeModalVisible = true;
 
@@ -179,7 +179,7 @@
         }).then(response=>{
           this.branchNameGroup=response.data
         }).catch(error=>{
-          alert(error)
+          this.$Message.error(error)
         });
         this.branchModalVisible = true;
 
@@ -193,7 +193,7 @@
           data: formdata,
           headers: { 'Content-Type': 'multipart/form-data' }
         }).then(response=>{
-          alert(response.data);
+          this.$Message.info(response.data);
           $mv.$img2Url(pos,url);
         });
       }

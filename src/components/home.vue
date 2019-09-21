@@ -12,10 +12,10 @@
               </i>
             </li>
             <li><a class="bar-title" @click="fuck">个人主页</a></li>
-            <li><a class="bar-title" @click="date" href="#">日志</a></li>
-            <li><a class="bar-title" id="self" href="#">自我介绍</a></li>
-            <li><a class="bar-title" @click="help" id="help" href="#">帮助</a></li>
-            <li><Input class="bar-title" id="search" search placeholder="search" /></li>
+            <li><a class="bar-title" @click="date">日志</a></li>
+            <li><a class="bar-title" @click="self" id="self">自我介绍</a></li>
+            <li><a class="bar-title" @click="help" id="help">帮助</a></li>
+            <li><Input class="bar-title" id="search" search placeholder="" /></li>
             <!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
             <li>
               <div id="creation"
@@ -34,13 +34,13 @@
         <Content>
           <div id="content">
 <!--            <ArticleList></ArticleList>-->
-            <router-view/>
+            <router-view :key="key"></router-view>
 <!--            <div id="demo"></div>-->
           </div>
         </Content>
         <Sider id="right-side">
           <Announcement></Announcement>
-          <br><br><br><br><br><br>
+          <br><br>
           <RightLabel></RightLabel>
         </Sider>
       </Layout>
@@ -88,7 +88,7 @@
       :styles="{width: '280px',top: '190px'}"
       footer-hide>
       <h3 style="text-align: center"><Icon size="50" type="md-key" />At the Modal,input the private key to entry the editor.</h3><br>
-        <Input type="textarea" placeholder="private key"/><br><br>
+        <Input type="password" v-model="KeyPassword" placeholder="private key"/><br><br>
         <a @click="entryEditor" style="margin-left: 40%;"><Icon  size="40" type="md-checkmark" /></a>
     </Modal>
 
@@ -122,16 +122,22 @@
         // this.$router.go(0)
       },
       date(){
-        this.$router.push({path: '/ArticleList'})
+        this.$router.push({path: '/Archive'})
       },
       enterClick(){
         this.ModalVisible = true
       },
       entryEditor(){
-        this.$router.push({path: '/creation'});
+        if(this.KeyPassword === 'hello world')
+          this.$router.push({path: '/creation'});
+        else
+          this.$Message.error('go away')
       },
       help(){
-
+        this.$router.push({name: 'Tips'});
+      },
+      self(){
+        this.$router.push({name: 'Self'});
       }
     },
     mounted() {
@@ -139,6 +145,11 @@
     },
     created() {
       // this.date();
+    },
+    computed: {
+      key() {
+        return this.$route.path + Math.random();
+      }
     }
   }
 
@@ -234,7 +245,7 @@
   }
 
   #home #bar ul:hover{
-    transition: all 0.2s linear;
+    transition: all 0.09s linear;
     box-shadow: 0 2px 5px #b4b4b4;
   }
 
@@ -243,7 +254,7 @@
   }
   #home #bar ul li .bar-title{
     color: deepskyblue;
-    font-family: "Microsoft YaHei UI",serif;
+    font-family: "Microsoft YaHei UI Light",serif;
     display: block;
     padding-top: 12px;
     margin: 6px;
@@ -291,4 +302,12 @@
     color: #52c41a;
   }
 
+  #home #bar .logo{
+    color: rgb(0, 0, 0);
+  }
+
+  #home #bar .logo:hover{
+    color: #256c91;
+    cursor: pointer;
+  }
 </style>

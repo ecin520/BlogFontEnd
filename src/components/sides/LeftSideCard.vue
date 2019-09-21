@@ -1,16 +1,16 @@
 <template>
-  <Card class="left-card"  style="border-radius:13px;">
+  <Card class="left-card"  style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
     <Row>
       <Col span="14">
         <img :src="QQImg"/>
       </Col>
       <Col span="10">
-        <a style="font-size: 12px;font-family: Microsoft YaHei UI, serif">{{introduction}}</a>
+        <a style="font-size: 13px;font-family: 'Segoe UI';color: #70bfd9;">{{introduction}}</a>
       </Col>
     </Row>
     <Row>
       <h1 style="text-align: center;">Ecin520</h1><br>
-      <a>Programming&Enthusiast</a><br><br>
+      <a>Programming♦Enthusiast</a><br><br>
       <p style="text-align: center;color: #52c41a;"><Icon size="24" type="ios-navigate-outline" />江西·南昌</p><br>
       <Button @click="showQQ" style="margin-left: 38px;" type="warning" shape="circle">点击关注</Button>
     </Row>
@@ -19,7 +19,7 @@
       v-model="QQModalVisible"
       :closable="false"
       :loading="loading"
-      :styles="{width: '230px',top: '190px'}"
+      :styles="{width: '230px',top: '70px'}"
       footer-hide>
       <img style="width: 100%" :src="QQImg"/><br><br>
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Icon size="50" type="logo-tux" />
