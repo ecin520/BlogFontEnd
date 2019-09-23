@@ -31,9 +31,7 @@ import marked from 'marked'
 import axios from 'axios';
 import qs from 'qs';
 
-//标签云
-// import tagCloud from 'v-tag-cloud'
-// Vue.use(tagCloud);
+
 
 Vue.prototype.$axios = axios;
 Vue.prototype.$qs = qs;

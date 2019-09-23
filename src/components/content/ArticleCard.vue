@@ -25,7 +25,26 @@
     methods: {
 
     },
+    created(){
+      marked.setOptions({
+        renderer: this.article_html,
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: true,
+        smartypants: false
+      });
+      this.article_html = marked(response.data.content,{sanitize: true});
+      this.article_html = '# 请耐心等待数据加载\n' +
+        '\n' +
+        '\n' +
+        '\n'
+    },
     mounted() {
+
+
       let params = new FormData();
       params.append('id',this.$route.params.id);
       this.$axios({
