@@ -14,17 +14,17 @@
           <Card id="select-card" style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
             <br><br><br><br><br><br>
             <Row>
-              <Col span="12"><Button type="success" @click="createNotes">创建笔记</Button></Col>
-              <Col span="12"><Button type="success" @click="editNotes">编辑笔记</Button></Col>
+              <Col span="12"><Button size="large" type="success" @click="createNotes">创建笔记</Button></Col>
+              <Col span="12"><Button size="large" type="success" @click="editNotes">编辑笔记</Button></Col>
             </Row><br>
             <Row>
-              <Col span="12"><Button @click="typeClick" type="info" >添加类型</Button></Col>
-              <Col span="12"><Button type="info" @click="branchClick">添加分支</Button></Col>
+              <Col span="12"><Button size="large" @click="typeClick" type="info" >添加类型</Button></Col>
+              <Col span="12"><Button size="large" type="info" @click="branchClick">添加分支</Button></Col>
             </Row><br>
             <Row>
-              <Col span="12"><Button type="error" disabled>等待开发</Button></Col>
+              <Col span="12"><Button size="large" type="error" disabled>等待开发</Button></Col>
               <Col span="12">
-                <Button type="error" disabled>等待开发</Button>
+                <Button size="large" type="error" disabled>等待开发</Button>
               </Col>
             </Row><br>
           </Card>
@@ -40,7 +40,7 @@
       :styles="{width: '230px',top: '240px'}"
       footer-hide>
       <h1 style="text-align: center">Type名称<Input v-model="type_name" /></h1><br>
-      <Button @click="addType" style="margin-left: 40%;">添加Type</Button>
+      <Button @click="addType" style="float: right">添加类型</Button><br><br>
     </Modal>
 
     <Modal
@@ -51,7 +51,7 @@
       :styles="{width: '230px',top: '240px'}"
       footer-hide>
       <h1 style="text-align: center">Branch名称<Input v-model="branch_name" /></h1><br>
-      <Button @click="addBranch"  style="margin-left: 40%;">添加Branch</Button>
+      <Button @click="addBranch"  style="float: right">添加分支</Button><br><br>
     </Modal>
 
   </div>

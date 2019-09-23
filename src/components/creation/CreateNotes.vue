@@ -53,7 +53,7 @@
         </Col>
       </Row><br>
       <Row>
-        <Button style="margin-left: 80%;" @click="submitForm">提交</Button>
+        <Button style="float: right" @click="submitForm">提交</Button>
       </Row>
     </Modal>
 

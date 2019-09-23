@@ -16,9 +16,6 @@
         <h1><a style="color: #52c41a;margin-top: -20px;">2018</a></h1>
       </TimelineItem>
       <TimelineItem color="green">
-        <h1><a style="color: #52c41a;margin-top: -20px;">2018</a></h1>
-      </TimelineItem>
-      <TimelineItem color="green">
         <h1><a style="color: #52c41a;margin-top: -20px;">2017</a></h1>
       </TimelineItem>
     </Timeline>
@@ -31,7 +28,8 @@
       footer-hide>
       <h1 style="text-align: center">请选择您的操作</h1><br>
       <h2 style="text-align: center;color: #52c41a">{{the_title}}</h2><br>
-        <Button @click="modifyArticle" style="float: left" type="default">修改</Button>
+        <Button @click="modifyArticle" style="float: right" type="default">修改</Button>
+        <span style="float: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <Button @click="deleteArticle" style="float: right" type="error">删除</Button>
         <br><br>
 
@@ -51,6 +49,7 @@
         the_title: ''
       }
     },
+    // inject: ['reload'],
     methods: {
       articleClick(item){
         this.article_id = item.id;
@@ -58,6 +57,7 @@
         this.Visible = true;
       },
       deleteArticle(){
+        // let that = this;
         this.$axios({
           url: '/api/article/deleteArticle',
           params: {
@@ -67,7 +67,9 @@
         }).then(response=>{
           this.$Message.info('success');
           this.Visible = false;
-          this.$router.push({name: '/DeleteArticle'})
+          // this.$router.push({path: '/DeleteArticle'});
+          this.$router.go(0);
+          // that.reload()
         }).catch(error=>{
           this.$Message.error(error)
         });
