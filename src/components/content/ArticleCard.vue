@@ -1,6 +1,6 @@
 <template>
   <div id="ArticleCard">
-    <Card style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
+    <Card class="animated bounce fadeInDown" style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
       <div v-highlight class="markdown-body" v-html="article_html"></div>
     </Card>
   </div>

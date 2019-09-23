@@ -1,5 +1,5 @@
 <template>
-  <Card class="tips">
+  <Card id="tips" class="animated bounce fadeInDown">
     <div v-highlight class="markdown-body" v-html="tips_html"></div>
   </Card>
 </template>
@@ -169,7 +169,7 @@
 </script>
 
 <style scoped>
-  .tips{
+  #tips{
     text-align: center;
     margin: 21px;
     border-radius: 13px;

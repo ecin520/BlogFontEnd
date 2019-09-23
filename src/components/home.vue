@@ -28,7 +28,7 @@
       </div>
       <!--      </Header>-->
       <Layout id="side-content">
-        <Sider id="left-side">
+        <Sider class="animated bounce fadeInDown" id="left-side">
           <LeftSideCard></LeftSideCard>
         </Sider>
         <Content>
@@ -38,7 +38,7 @@
             <!--            <div id="demo"></div>-->
           </div>
         </Content>
-        <Sider id="right-side">
+        <Sider class="animated bounce fadeInDown" id="right-side">
           <Announcement></Announcement>
           <br><br>
           <RightLabel></RightLabel>

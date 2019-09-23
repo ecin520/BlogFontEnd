@@ -1,5 +1,5 @@
 <template>
-  <div id="BranchArchive">
+  <div id="BranchArchive" class="animated bounce fadeInDown">
     <Timeline>
       <TimelineItem color="green">
         <h1><a style="color: #52c41a;margin-top: -20px;">{{this.$route.params.id}}</a></h1>

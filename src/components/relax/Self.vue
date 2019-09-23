@@ -1,5 +1,5 @@
 <template>
-  <Card class="self">
+  <Card id="self" class="animated bounce fadeInDown">
     <div v-highlight class="markdown-body" v-html="self_html"></div>
   </Card>
 </template>
@@ -58,7 +58,7 @@
 </script>
 
 <style scoped>
-  .self{
+  #self{
     text-align: center;
     margin: 21px;
     border-radius: 13px;

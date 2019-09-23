@@ -1,6 +1,6 @@
 <template>
   <div id="CreativeCenter">
-    <div id="show-card">
+    <div id="show-card" class="animated bounce fadeInDown">
       <Row>
         <Col class="side-col" span="5">
           &nbsp;

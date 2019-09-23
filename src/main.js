@@ -51,6 +51,8 @@ Vue.use(VueCookies)
 import Vuex from 'vuex'
 import store from './store'
 
+import animate from 'animate.css'
+Vue.use(animate)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

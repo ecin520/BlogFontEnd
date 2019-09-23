@@ -1,6 +1,6 @@
 <template>
     <div id="Article">
-      <div class="article-list-content" v-for="(item,index) in article">
+      <div class="animated bounce fadeInDown" style="margin: 21px;" v-for="(item,index) in article">
         <Card style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;" :dis-hover="true">
           <a @click="entryArticle(item)" slot="title"><h2>{{item.title}}</h2></a>
           <a @click="entryArticle(item)">{{item.generalize}}</a><br><br>

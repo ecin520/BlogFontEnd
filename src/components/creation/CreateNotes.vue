@@ -3,7 +3,8 @@
 
 <!--    <Input class="title-input" size="large" v-model="article_title" placeholder="Input the title" />-->
     <mavon-editor
-      class="editor"
+      class="animated bounce fadeInDown"
+      style="position: absolute;width: 100%;height: 100%;"
       v-model = "article.content"
       @imgAdd = "$imgAdd"
       ref="md"

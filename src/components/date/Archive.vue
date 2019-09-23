@@ -1,11 +1,11 @@
 <template>
-    <div id="Archive">
+    <div id="Archive" class="animated bounce fadeInDown">
       <Timeline>
         <TimelineItem color="green">
           <h1><a style="color: #52c41a;margin-top: -20px;">2019</a></h1>
         </TimelineItem>
         <TimelineItem v-for="item in article" :key="item.index">
-          <Card style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
+          <Card  style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
             <a @click="articleClick(item)" slot="title"><h2>{{item.title}}</h2></a>
             <a @click="articleClick(item)" style="color: #b89d91"><Icon size="23" type="md-calendar" />{{item.time}} &nbsp;&nbsp;</a>
             <a @click="typeClick(item.type_name)" style="color: #b89d91"><Icon size="23" type="md-copy" />{{item.type_name}} &nbsp;&nbsp;</a>
