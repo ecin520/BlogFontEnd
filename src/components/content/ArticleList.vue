@@ -80,8 +80,10 @@
     created() {
       this.$Loading.start();
       this.$axios({
-        url: '/api/article/getAllArticle',
-        method: 'get'
+        url: this.$store.state.host+'/article/getAllArticle',
+        method: 'get',
+        dataType: 'jsonp',
+        crossDomain: true
       }).then(response=>{
         this.tempData = response.data;
         this.itemNum = this.tempData.length;

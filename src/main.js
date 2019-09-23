@@ -49,10 +49,15 @@ Vue.config.productionTip = false
 import VueCookies from 'vue-cookies'
 Vue.use(VueCookies)
 
+
+import Vuex from 'vuex'
+import store from './store'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

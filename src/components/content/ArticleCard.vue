@@ -29,7 +29,7 @@
       let params = new FormData();
       params.append('id',this.$route.params.id);
       this.$axios({
-        url: '/api/article/getArticleById',
+        url: this.$store.state.host+'/article/getArticleById',
         method: 'post',
         params: {
           id: this.$route.params.id

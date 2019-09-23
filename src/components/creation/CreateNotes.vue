@@ -132,7 +132,7 @@
       submitForm(){
 
         this.$axios({
-          url: '/api/article/insertArticle',
+          url: this.$store.state.host+'/article/insertArticle',
           method: 'post',
           data: {
             title: this.article.title,
@@ -161,7 +161,7 @@
       selectTypeName(){
 
         this.$axios({
-          url: '/api/type/selectAllType',
+          url: this.$store.state.host+'/type/selectAllType',
           method: 'get'
         }).then(response=>{
           this.typeNameGroup=response.data
@@ -174,7 +174,7 @@
       selectBranchName(){
 
         this.$axios({
-          url: '/api/branch/selectAllBranch',
+          url: this.$store.state.host+'/branch/selectAllBranch',
           method: 'get'
         }).then(response=>{
           this.branchNameGroup=response.data
@@ -188,7 +188,7 @@
         var formdata = new FormData();
         formdata.append('file',$file);
         this.$axios({
-          url: '/api/fileUpload/imageUpload',
+          url: this.$store.state.host+'/fileUpload/imageUpload',
           method: 'post',
           data: formdata,
           headers: { 'Content-Type': 'multipart/form-data' }

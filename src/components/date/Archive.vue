@@ -48,7 +48,7 @@
     created() {
       this.$Loading.start();
       this.$axios({
-        url: '/api/article/getArticleOrderByDate',
+        url: this.$store.state.host+'/article/getArticleOrderByDate',
         method: 'get'
       }).then(response=>{
         this.article = response.data;

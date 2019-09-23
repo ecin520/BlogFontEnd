@@ -51,7 +51,7 @@
     created() {
 
       this.$axios({
-        url: '/api/type/selectAllType',
+        url: this.$store.state.host+'/type/selectAllType',
         method: 'get'
       }).then(response=>{
         this.type=response.data
@@ -60,7 +60,7 @@
       });
 
       this.$axios({
-        url: '/api/branch/selectAllBranch',
+        url: this.$store.state.host+'/branch/selectAllBranch',
         method: 'get'
       }).then(response=>{
         this.branch=response.data

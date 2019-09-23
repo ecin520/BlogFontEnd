@@ -59,7 +59,7 @@
       deleteArticle(){
         // let that = this;
         this.$axios({
-          url: '/api/article/deleteArticle',
+          url: this.$store.state.host+'/article/deleteArticle',
           params: {
             id: this.article_id
           },
@@ -78,7 +78,7 @@
     created() {
       this.$Loading.start();
       this.$axios({
-        url: '/api/article/getArticleOrderByDate',
+        url: this.$store.state.host+'/article/getArticleOrderByDate',
         method: 'get'
       }).then(response=>{
         this.article = response.data;

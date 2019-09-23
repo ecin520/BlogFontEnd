@@ -39,7 +39,7 @@
 
       this.$Loading.start();
       this.$axios({
-        url: '/api/article/getArticleByTypeName',
+        url: this.$store.state.host+'/article/getArticleByTypeName',
         method: 'get',
         params: {
           type_name: this.$route.params.id

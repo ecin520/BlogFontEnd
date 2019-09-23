@@ -39,7 +39,7 @@
 
       this.$Loading.start();
       this.$axios({
-        url: '/api/article/getArticleByBranchName',
+        url: this.$store.state.host+'/article/getArticleByBranchName',
         method: 'get',
         params: {
           branch_name: this.$route.params.id

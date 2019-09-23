@@ -83,7 +83,7 @@
       addType(){
 
         this.$axios({
-          url: '/api/type/insertType',
+          url: this.$store.state.host+'/type/insertType',
           method: 'post',
           data: {
             type_name: this.type_name,
@@ -99,7 +99,7 @@
       addBranch(){
 
         this.$axios({
-          url: '/api/branch/insertBranch',
+          url: this.$store.state.host+'/branch/insertBranch',
           method: 'post',
           data: {
             branch_name: this.branch_name,
