@@ -125,13 +125,23 @@
         this.$router.push({path: '/Archive'})
       },
       enterClick(){
-        this.ModalVisible = true
+        if(this.$cookies.get('isLogin') === 'hello world'){
+          this.$router.push({path: '/creation'});
+        }
+        else{
+          this.ModalVisible = true
+        }
+
       },
       entryEditor(){
-        if(this.KeyPassword === 'hello world')
+
+        if(this.KeyPassword === 'hello world'){
+          this.$cookies.set('isLogin','hello world','10d')
           this.$router.push({path: '/creation'});
+        }
         else
           this.$Message.error('go away')
+
       },
       help(){
         this.$router.push({name: 'Tips'});
@@ -307,7 +317,7 @@
   }
 
   #home #bar .logo:hover{
-    color: #256c91;
+    /*color: #256c91;*/
     cursor: pointer;
   }
 </style>

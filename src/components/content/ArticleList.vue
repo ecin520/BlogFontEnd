@@ -15,6 +15,7 @@
       <div class="pageination">
         <Page :total="itemNum"
               :page-size="pageSize"
+              simple
               @on-change="changePage"
               ></Page>
       </div>

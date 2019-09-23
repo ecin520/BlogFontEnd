@@ -14,7 +14,13 @@
       <p style="text-align: center;color: #52c41a;"><Icon size="24" type="ios-navigate-outline" />江西·南昌</p><br>
       <Button @click="showQQ" style="margin-left: 38px;" type="warning" shape="circle">点击关注</Button>
     </Row>
-    <p></p>
+    <Row>
+      <br>&nbsp;&nbsp;
+      <a @click="ScrollTop(speed)" style="font-family: 'Microsoft YaHei UI Light',serif;color: #ed4014">Go Top</a>
+      <Divider type="vertical" />
+      <a @click="ScrollDown(speed)" style="font-family: 'Microsoft YaHei UI Light',serif;color: #ed4014">Go Down</a>
+    </Row>
+
     <Modal
       v-model="QQModalVisible"
       :closable="false"
@@ -40,17 +46,24 @@
 
 <script>
   export default {
-     data(){
-       return{
-         QQImg: require('@/assets/qq.png'),
-         introduction: '江西师范大学软件学院大三在读',
-         QQModalVisible: false
-       }
+   data(){
+     return{
+       QQImg: require('@/assets/qq.png'),
+       introduction: '江西师范大学软件学院大三在读',
+       QQModalVisible: false,
+       speed: 50
+     }
+   },
+   methods:{
+     showQQ(){
+       this.QQModalVisible = true
      },
-    methods: {
-       showQQ(){
-         this.QQModalVisible = true
-       }
+     ScrollTop(){
+       document.getElementById("bar").scrollIntoView();
+     },
+     ScrollDown(){
+       document.getElementById("footer").scrollIntoView();
+     }
     }
   }
 </script>
