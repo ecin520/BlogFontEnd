@@ -15,7 +15,7 @@
           <li><a class="bar-title" @click="date">日志</a></li>
           <li><a class="bar-title" @click="self" id="self">自我介绍</a></li>
           <li><a class="bar-title" @click="help" id="help">帮助</a></li>
-          <li><Input class="bar-title" id="search" search placeholder="" /></li>
+          <li><Input class="bar-title" id="search" search placeholder="" disabled /></li>
           <!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
           <li>
             <div id="creation"
@@ -47,24 +47,23 @@
       <Footer id="footer">
         <Divider/>
                 <Row>
-        <Col span="6">
+        <Col span="7">
           <ul style="float: left;text-align: center;list-style-type: none;">
             <li>作者其他平台</li><br>
             <li><a href="https://github.com//ecin520" target="_blank"><Icon size="24" type="logo-github" /> github</a></li><br>
             <li><a href="https://blog.csdn.net/ecin520" target="_blank"><Icon size="24" type="ios-paper-plane-outline" />CSDN</a></li><br>
-            <li><a target="_blank"><Icon size="24" type="ios-call" />Telphone</a></li><br>
+            <li><a target="_blank"><Icon size="24" type="ios-call" />Phone</a></li><br>
             <li><a target="_blank"><Icon size="24" type="ios-mail-outline" />Gmail</a></li><br>
           </ul>
         </Col>
-        <Col span="12">
-
+        <Col span="11">
+          <span class="recomand-title">推荐链接</span><br>
           <div class="recomand-link">
-            <span style="margin-left: 37%;">推荐链接</span><br>
             <a class="link-branch" href="https://spring.io/" target="_blank">Spring</a>
             <a class="link-branch" href="https://cn.vuejs.org/" target="_blank">Vue中文官网</a>
             <a class="link-branch" href="https://mvnrepository.com/" target="_blank">Maven</a>
             <a class="link-branch" href="https://start.spring.io/" target="_blank">SpringBoot</a>
-            <a class="link-branch" href="http://148.70.50.70/ArticleList" target="_blank">本站首页</a>
+            <a class="link-branch" href="http://148.70.50.70/#/" target="_blank">本站首页</a>
             <a class="link-branch" href="https://www.youtube.com/?hl=zh-CN" target="_blank">Youtube</a>
             <a class="link-branch" href="https://www.bilibili.com/" target="_blank">bilibili</a>
             <a class="link-branch" href="https://translate.google.cn/" target="_blank">Google Translate</a>
@@ -96,9 +95,9 @@
         </Col>
         <Col span="6">
           <div class="given">
-            &nbsp;&nbsp;&nbsp;&nbsp;捐赠Alipay<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alipay<br>
             <img width="100px" src="@/assets/alipay.png"/>
-            <br>&nbsp;&nbsp;捐赠WeChat<br>
+            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeChat<br>
             <img width="100px" src="@/assets/wechat.png"/>
           </div>
         </Col>
@@ -180,6 +179,7 @@
     },
     mounted() {
       // this.date();
+      this.$router.push({path: '/ArticleList'});
     },
     created() {
       // this.date();
@@ -252,6 +252,9 @@
     }
     .given{
       float: right;
+    }
+    .recomand-title{
+      display: none;
     }
   }
   /*------------------border----------------------*/
@@ -333,14 +336,17 @@
     cursor: pointer;
   }
   .recomand-link{
-    /*padding: 30px;*/
+    padding: 20px;
   }
   .recomand-link .link-branch{
     padding: 5px;
     color: #008800;
   }
   .given{
-    margin-left: 30%;
+    margin-left: 40%;
   }
 
+  .recomand-title{
+    margin-left: 37%;
+  }
 </style>

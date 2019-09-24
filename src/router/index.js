@@ -10,6 +10,7 @@ import Archive from '../components/date/Archive'
 import TypeArchive from '../components/date/TypeArchive'
 import BranchArchive from '../components/date/BranchArchive'
 import DeleteArticle from '../components/operating/DeleteArticle'
+import EditArticle from '../components/operating/EditArticle'
 import Self from '../components/relax/Self'
 import Tips from '../components/help/Tips'
 
@@ -73,6 +74,11 @@ export default new Router({
       path: '/DeleteArticle',
       name: 'DeleteArticle',
       component: DeleteArticle
+    },
+    {
+      path: '/EditArticle/:id',
+      name: 'EditArticle',
+      component: EditArticle
     }
   ]
 })

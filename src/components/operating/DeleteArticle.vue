@@ -27,7 +27,7 @@
       :styles="{width: '280px',top: '190px'}"
       footer-hide>
       <h1 style="text-align: center">请选择您的操作</h1><br>
-      <h2 style="text-align: center;color: #52c41a">{{the_title}}</h2><br>
+      <h2 style="color: #52c41a">{{the_title}}</h2><br>
         <Button @click="modifyArticle" style="float: right" type="default">修改</Button>
         <span style="float: right">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
         <Button @click="deleteArticle" style="float: right" type="error">删除</Button>
@@ -73,6 +73,9 @@
         }).catch(error=>{
           this.$Message.error(error)
         });
+      },
+      modifyArticle(){
+        this.$router.push({name: 'EditArticle',params: {id: this.article_id}});
       }
     },
     created() {
