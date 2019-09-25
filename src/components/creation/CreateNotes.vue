@@ -187,7 +187,7 @@
       },
       $imgAdd(pos,$file){
 
-        var formdata = new FormData();
+        let formdata = new FormData();
         formdata.append('file',$file);
         this.$axios({
           url: this.$store.state.host+'/fileUpload/imageUpload',
@@ -196,7 +196,9 @@
           headers: { 'Content-Type': 'multipart/form-data' }
         }).then(response=>{
           this.$Message.info(response.data);
-          $mv.$img2Url(pos,url);
+          // alert(response.data);
+          this.$refs.md.$img2Url(pos,response.data)
+          // $mv.$img2Url(pos,url);
         });
 
       }
