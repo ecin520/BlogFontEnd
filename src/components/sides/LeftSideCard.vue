@@ -59,7 +59,17 @@
        this.QQModalVisible = true
      },
      ScrollTop(){
-       document.getElementById("bar").scrollIntoView();
+       // document.getElementById("bar").scrollIntoView();
+       let distance = document.documentElement.scrollTop || document.body.scrollTop;
+       let step = distance/20;
+       (function jump(){
+         if(distance > 0){
+           distance-=step;
+           window.scrollTo(0,distance);
+           setTimeout(jump,10)
+         }
+       })();
+
      },
      ScrollDown(){
        document.getElementById("footer").scrollIntoView();

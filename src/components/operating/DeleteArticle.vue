@@ -1,5 +1,5 @@
 <template>
-  <div id="Archive" class="animated bounce fadeInDown">
+  <div id="Archive" class="animated bounce fadeIn">
     <Timeline>
       <TimelineItem color="green">
         <h1><a style="color: #52c41a;margin-top: -20px;">2019</a></h1>

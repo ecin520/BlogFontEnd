@@ -39,7 +39,7 @@
       :z-index="10001"
       :styles="{width: '230px',top: '240px'}"
       footer-hide>
-      <h1 style="text-align: center">Type名称<Input v-model="type_name" /></h1><br>
+      <h1 style="text-align: center">类型名称<Input v-model="type_name" /></h1><br>
       <Button @click="addType" style="float: right">添加类型</Button><br><br>
     </Modal>
 
@@ -50,7 +50,7 @@
       :z-index="10001"
       :styles="{width: '230px',top: '240px'}"
       footer-hide>
-      <h1 style="text-align: center">Branch名称<Input v-model="branch_name" /></h1><br>
+      <h1 style="text-align: center">分支名称<Input v-model="branch_name" /></h1><br>
       <Button @click="addBranch"  style="float: right">添加分支</Button><br><br>
     </Modal>
 
@@ -87,12 +87,13 @@
           method: 'post',
           data: {
             type_name: this.type_name,
-            type_url: 'localhost:8080/TypeArchive'+this.type_name,
+            type_url: '',
           }
         }).then(response=>{
-          alert('success')
+          this.type_visible = false;
+          this.$Message.info('Success');
         }).catch(error=>{
-          alert(error)
+          this.$Message.error('Fail');
         });
 
       },
@@ -103,12 +104,13 @@
           method: 'post',
           data: {
             branch_name: this.branch_name,
-            branch_url: 'localhost:8080/BranchArchive'+this.branch_name,
+            branch_url: '',
           }
         }).then(response=>{
-          alert('success')
+          this.branch_visible = false;
+          this.$Message.info('Success');
         }).catch(error=>{
-          alert(error)
+          this.$Message.error('Fail');
         });
 
       },

@@ -1,5 +1,5 @@
 <template>
-  <Card id="self" class="animated bounce fadeInDown">
+  <Card id="self" class="animated bounce fadeIn">
     <div v-highlight class="markdown-body" v-html="self_html"></div>
   </Card>
 </template>
