@@ -16,12 +16,13 @@ import Tips from '../components/help/Tips'
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
       name: 'home',
       component: home,
+      redirect: '/ArticleList',
       children: [
         {
           path: '/ArticleList',
@@ -63,22 +64,59 @@ export default new Router({
     {
       path: '/creation',
       name: 'creation',
-      component: creation
+      component: creation,
+      beforeEnter: (to,from,next)=>{
+        let isLogin = router.app.$cookies.get('isLogin');
+        if(isLogin === null){
+          router.push('/ArticleList')
+        }
+        else if(isLogin === 'hello world'){
+          next();
+        }
+      }
     },
     {
       path: '/CreateNotes',
       name: 'CreateNotes',
-      component: CreateNotes
+      component: CreateNotes,
+      beforeEnter: (to,from,next)=>{
+        let isLogin = router.app.$cookies.get('isLogin');
+        if(isLogin === null){
+          router.push('/ArticleList')
+        }
+        else if(isLogin === 'hello world'){
+          next();
+        }
+      }
     },
     {
       path: '/DeleteArticle',
       name: 'DeleteArticle',
-      component: DeleteArticle
+      component: DeleteArticle,
+      beforeEnter: (to,from,next)=>{
+        let isLogin = router.app.$cookies.get('isLogin');
+        if(isLogin === null){
+          router.push('/ArticleList')
+        }
+        else if(isLogin === 'hello world'){
+          next();
+        }
+      }
     },
     {
       path: '/EditArticle/:id',
       name: 'EditArticle',
-      component: EditArticle
+      component: EditArticle,
+      beforeEnter: (to,from,next)=>{
+        let isLogin = router.app.$cookies.get('isLogin');
+        if(isLogin === null){
+          router.push('/ArticleList')
+        }
+        else if(isLogin === 'hello world'){
+          next();
+        }
+      }
     }
   ]
-})
+});
+export default router;

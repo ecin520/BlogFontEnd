@@ -179,10 +179,11 @@
     },
     mounted() {
       // this.date();
-      this.$router.push({path: '/ArticleList'});
+      // this.$router.push({path: '/ArticleList'});
     },
     created() {
       // this.date();
+      // this.$router.push({path: '/ArticleList'});
     },
     computed: {
       key() {

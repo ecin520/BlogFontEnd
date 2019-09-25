@@ -186,6 +186,7 @@
 
       },
       $imgAdd(pos,$file){
+
         var formdata = new FormData();
         formdata.append('file',$file);
         this.$axios({
@@ -197,6 +198,7 @@
           this.$Message.info(response.data);
           $mv.$img2Url(pos,url);
         });
+
       }
     },
     created() {

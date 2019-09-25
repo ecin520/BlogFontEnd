@@ -41,7 +41,7 @@
 <style scoped>
   .Announcement{
     margin-right: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
     box-shadow: 1px 1px 6px #adadad;
   }
 </style>

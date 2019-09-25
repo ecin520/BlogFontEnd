@@ -22,7 +22,7 @@
               <Col span="12"><Button size="large" type="info" @click="branchClick">添加分支</Button></Col>
             </Row><br>
             <Row>
-              <Col span="12"><Button size="large" type="error" disabled>等待开发</Button></Col>
+              <Col span="12"><Button size="large" @click="logout" type="error" >退出登陆</Button></Col>
               <Col span="12">
                 <Button size="large" type="error" disabled>等待开发</Button>
               </Col>
@@ -114,6 +114,11 @@
       },
       editNotes(){
         this.$router.push({name: 'DeleteArticle'});
+      },
+      logout(){
+        this.$cookies.remove('isLogin');
+        this.$Message.info('清除cookie成功');
+        this.$router.push({name: 'ArticleList'});
       }
     }
   }
