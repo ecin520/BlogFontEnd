@@ -130,7 +130,7 @@
         }).then(response=>{
           this.$Message.info('Success');
         }).catch(error=>{
-          this.$Message.error('Fail');
+          // this.$Message.error('Fail');
         });
 
       }
