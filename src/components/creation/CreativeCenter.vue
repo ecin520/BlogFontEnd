@@ -24,7 +24,7 @@
             <Row>
               <Col span="12"><Button size="large" @click="logout" type="error" >退出登陆</Button></Col>
               <Col span="12">
-                <Button size="large" type="error" disabled>等待开发</Button>
+                <Button size="large" type="error" @click="deleteNullTypeBranch">删除空类</Button>
               </Col>
             </Row><br>
           </Card>
@@ -121,6 +121,18 @@
         this.$cookies.remove('isLogin');
         this.$Message.info('清除cookie成功');
         this.$router.push({name: 'ArticleList'});
+      },
+      deleteNullTypeBranch(){
+
+        this.$axios({
+          url: this.$store.state.host+'/core/deleteNullTypeBranch',
+          method: 'get'
+        }).then(response=>{
+          this.$Message.info('Success');
+        }).catch(error=>{
+          this.$Message.error('Fail');
+        });
+
       }
     }
   }
