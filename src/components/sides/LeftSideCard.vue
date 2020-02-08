@@ -5,20 +5,23 @@
         <img :src="QQImg"/>
       </Col>
       <Col span="10">
-        <a style="font-size: 13px;font-family: 'Segoe UI';color: #70bfd9;">{{introduction}}</a>
+        <a style="font-size: 13px;color: #70bfd9;">{{introduction}}</a>
       </Col>
     </Row>
     <Row>
-      <h1 style="text-align: center;">Ecin520</h1><br>
-      <a>Programming♦Enthusiast</a><br><br>
-      <p style="text-align: center;color: #52c41a;"><Icon size="24" type="ios-navigate-outline" />江西·南昌</p><br>
+      <h1 style="font-family: 'JetBrains';text-align: center;">Ecin520</h1><br>
+      <a style="font-family: 'JetBrains';font-size: 0.8em">Programming Enthusiast</a><br><br>
+      <p style="font-family: 'JetBrains';text-align: center;color: #52c41a;"><Icon size="24" type="ios-navigate-outline" />江西·南昌</p><br>
       <Button @click="showQQ" style="margin-left: 38px;" type="warning" shape="circle">点击关注</Button>
+    </Row><br>
+    <Row>
+      <p style="text-align: center;font-size: 1.2em;color: #5ecbfa;">访问量：{{vis}}</p>
     </Row>
     <Row>
       <br>&nbsp;&nbsp;
-      <a @click="ScrollTop(speed)" style="font-family: 'Microsoft YaHei UI Light',serif;color: #ed4014">Go Top</a>
+      <a @click="ScrollTop(speed)" style="font-family: 'JetBrains';color: #ed4014">Go Top</a>
       <Divider type="vertical" />
-      <a @click="ScrollDown(speed)" style="font-family: 'Microsoft YaHei UI Light',serif;color: #ed4014">Go Down</a>
+      <a @click="ScrollDown(speed)" style="font-family: 'JetBrains';color: #ed4014">Go Down</a>
     </Row>
 
     <Modal
@@ -49,9 +52,10 @@
    data(){
      return{
        QQImg: require('@/assets/qq.png'),
-       introduction: '江西师范大学软件学院大三在读',
+       introduction: '江西师范大学软件学院本科毕业',
        QQModalVisible: false,
-       speed: 50
+       speed: 50,
+       vis: 0
      }
    },
    methods:{
@@ -74,6 +78,16 @@
      ScrollDown(){
        document.getElementById("footer").scrollIntoView();
      }
+    },
+    mounted() {
+        this.$axios({
+            url: this.$store.state.host+'/core/getVis',
+            method: 'get'
+        }).then(response=>{
+            this.vis = response.data
+        }).catch(error=>{
+            console.log(error)
+        });
     }
   }
 </script>
@@ -86,7 +100,7 @@
 
     position: -webkit-sticky;
     position: sticky;
-    top: 65px;
+    top: 70px;
     z-index: 0;
   }
   .left-card img{

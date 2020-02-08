@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+// import './styles/index.css'
 
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
@@ -15,7 +16,7 @@ import 'mavon-editor/dist/css/index.css'
 // import 'bootstrap/dist/js/bootstrap.min.js'
 
 import hljs from 'highlight.js';
-import 'highlight.js/styles/googlecode.css' //样式文件
+import 'highlight.js/styles/paraiso-light.css' //样式文件
 
 Vue.directive('highlight',function (el) {
   let blocks = el.querySelectorAll('pre code');
@@ -54,6 +55,8 @@ import store from './store'
 import animate from 'animate.css'
 Vue.use(animate)
 /* eslint-disable no-new */
+
+
 new Vue({
   el: '#app',
   router,

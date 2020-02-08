@@ -1,14 +1,14 @@
 <template>
     <div id="Article">
       <div class="animated bounce fadeIn" style="margin: 21px;" v-for="(item,index) in article">
-        <Card style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;" :dis-hover="true">
-          <a @click="entryArticle(item)" slot="title"><h2>{{item.title}}</h2></a>
-          <a @click="entryArticle(item)">{{item.generalize}}</a><br><br>
-          <img style="margin-right: 0;width: 150px;" :src="item.show_image" alt="" />
+        <Card class="article-list" style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;" :dis-hover="true">
+          <a @click="entryArticle(item)" slot="title"><a style="color: deepskyblue;font-size: 2em;font-family: 'JetBrains';">{{item.title}}</a></a>
+          <img v-if="item.show_image !== null" style="width: 100%;max-width: 270px;margin-bottom: 14px;" :src="item.show_image" alt="" /><br>
+          <a v-if="item.generalize !== null" style="font-size: 1.1em;font-family: 'JetBrains';color: #00a5ed;" @click="entryArticle(item)">{{item.generalize}}</a>
           <Divider/>
-          <a @click="entryArticle(item)" style="color: #b89d91"><Icon size="23" type="md-calendar" />{{item.time}} &nbsp;&nbsp;</a>
-          <a @click="typeClick(item.type_name)" style="color: #b89d91"><Icon size="23" type="md-copy" />{{item.type_name}} &nbsp;&nbsp;</a>
-          <a @click="branchClick(item.branch_name)" style="color: #b89d91"><Icon size="23" type="ios-git-branch" />{{item.branch_name}} &nbsp;&nbsp;</a>
+          <a @click="entryArticle(item)" style="font-family: 'JetBrains';color: #b89d91">{{item.time}}&nbsp;</a>
+          <a @click="typeClick(item.type_name)" style="font-family: 'JetBrains';color: #b89d91"><Icon size="23" type="md-copy" />{{item.type_name}}&nbsp;</a>
+          <a @click="branchClick(item.branch_name)" style="font-family: 'JetBrains';color: #b89d91"><Icon size="23" type="ios-git-branch" />{{item.branch_name}}</a>
         </Card>
 
       </div>
@@ -54,7 +54,7 @@
           }
         ],
         itemNum: 0,
-        pageSize: 5
+        pageSize: 10
       }
     },
     methods:{
@@ -108,8 +108,18 @@
 </script>
 
 <style scoped>
-  #Article .article-list-content{
-    margin: 21px;
+
+  @media screen and (max-width: 800px) {
+    .article-list {
+      border-radius: 0 !important;
+      box-shadow: 1px 1px 6px #adadad;
+      margin: 10px;
+    }
+  }
+
+  #Article {
+    margin-left: -21px;
+    margin-right: -21px;
   }
   #Article .pageination{
     text-align: center;

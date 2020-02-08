@@ -41,15 +41,28 @@
           </Col>
         </Row><br>
         <Row>
-          <Col span="6">
-            <Button @click="selectTypeName">请选择标签</Button>
-          </Col>
-          <Col span="6">
-            <Button @click="selectBranchName">请选择文章类型</Button>
-          </Col>
-        </Row><br>
+          <div style="display: flex;justify-content: center;">
+            <Button style="margin: 10px;" @click="selectTypeName">请选择标签</Button>
+            <Button style="margin: 10px;" @click="selectBranchName">请选择类型</Button>
+          </div>
+        </Row>
+        <br>
         <Row>
-          <Button style="float: right" @click="submitForm">提交</Button>
+          <h2 style="text-align: center">是否加入推荐文档</h2>
+        </Row>
+        <Row>
+          <div style="display: flex;justify-content: center;">
+            <RadioGroup style="margin: 10px;" v-model="article.recommend" type="button">
+              <Radio label="Yes"></Radio>
+              <Radio label="No"></Radio>
+            </RadioGroup>
+          </div>
+        </Row>
+        <br>
+        <Row>
+          <div style="display: flex;justify-content: center;">
+            <Button type="info"  @click="submitForm">提交</Button>
+          </div>
         </Row>
       </Modal>
 
@@ -92,7 +105,8 @@
             'article_url': '',
             'type_name': '',
             'branch_name': '',
-            'show_image': ''
+            'show_image': '',
+            'recommend': ''
           }
         ],
         article_title: '',
@@ -166,7 +180,8 @@
             article_url: this.article.article_url,
             type_name: this.article.type_name,
             branch_name: this.article.branch_name,
-            show_image: this.article.show_image
+            show_image: this.article.show_image,
+            recommend: this.article.recommend === 'Yes' ? 1:0
           }
         }).then(response=>{
           this.$Message.success('提交成功');
@@ -189,6 +204,11 @@
         }
       }).then(response=>{
         this.article = response.data;
+        if (this.article.recommend === '1') {
+            this.recommend = 'Yes';
+        } else {
+            this.recommend = 'No';
+        }
       }).catch(error=>{
         this.$Message.error(error);
       })

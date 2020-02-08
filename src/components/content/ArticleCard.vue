@@ -1,7 +1,7 @@
 <template>
   <div id="ArticleCard">
-    <Card class="animated bounce fadeIn" style="border-radius:13px;box-shadow: 1px 1px 6px #adadad;">
-      <div v-highlight class="markdown-body" v-html="article_html"></div>
+    <Card class="animated bounce fadeIn article-card" >
+      <div style="font-family: 'JetBrains'" v-highlight class="markdown-body" v-html="article_html"></div>
     </Card>
   </div>
 </template>>
@@ -10,6 +10,7 @@
   import marked from 'marked';
   import 'github-markdown-css';
   import 'highlight.js/styles/monokai-sublime.css';
+  // import '@/assets/retro.css'
 
   import https from '@/https.js'
 
@@ -73,10 +74,51 @@
 </script>
 
 <style scoped>
-  #ArticleCard{
-    margin: 21px;
-  }
-  .markdown-body pre{
+
+  @media screen and (max-width: 800px) {
+    .article-card{
+      border-radius: 0 !important;
+      box-shadow: 1px 1px 6px #adadad;
+      margin-top: 5px;
+    }
+
+    /*.markdown-body >>> code {*/
+    /*  font-family: "Fira Code Light";*/
+    /*  font-size: 13px;*/
+    /*}*/
 
   }
+
+  #ArticleCard .article-card {
+    border-radius: 13px;
+    box-shadow: 1px 1px 6px #adadad;
+  }
+
+  #ArticleCard {
+
+  }
+
+
+  .markdown-body >>> pre {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d1d1d1;
+    background: #ffffff;
+  }
+
+  .markdown-body >>> code {
+    font-family: JetBrains;
+    font-size: 12px;
+  }
+
+
+  .markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 1px;
+  }
+
+
 </style>

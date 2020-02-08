@@ -42,19 +42,32 @@
       <Row>
         <Col span="4"><h3>展示图片</h3></Col>
         <Col span="20">
-          <Input v-model="article.show_image" type="textarea" placeholder="Generalize" />
+          <Input v-model="article.show_image" type="textarea" placeholder="Show Image" />
         </Col>
       </Row><br>
       <Row>
-        <Col span="6">
-          <Button @click="selectTypeName">请选择标签</Button>
-        </Col>
-        <Col span="6">
-          <Button @click="selectBranchName">请选择文章类型</Button>
-        </Col>
-      </Row><br>
+        <div style="display: flex;justify-content: center;">
+          <Button style="margin: 10px;" @click="selectTypeName">请选择标签</Button>
+          <Button style="margin: 10px;" @click="selectBranchName">请选择类型</Button>
+        </div>
+      </Row>
+      <br>
       <Row>
-        <Button style="float: right" @click="submitForm">提交</Button>
+        <h2 style="text-align: center">是否加入推荐文档</h2>
+      </Row>
+      <Row>
+        <div style="display: flex;justify-content: center;">
+          <RadioGroup style="margin: 10px;" v-model="recommend" type="button">
+            <Radio label="Yes"></Radio>
+            <Radio label="No"></Radio>
+          </RadioGroup>
+        </div>
+      </Row>
+      <br>
+      <Row>
+        <div style="display: flex;justify-content: center;">
+          <Button type="info"  @click="submitForm">提交</Button>
+        </div>
       </Row>
     </Modal>
 
@@ -66,7 +79,7 @@
       :styles="{width: '230px',top: '220px'}"
       footer-hide>
       <RadioGroup v-model="article.type_name">
-        <Radio v-for="typeName in typeNameGroup" :label="typeName.type_name" :key="typeName.type_name.index"></Radio>
+        <Radio style="margin: 5px;" v-for="typeName in typeNameGroup" :label="typeName.type_name" :key="typeName.type_name.index"></Radio>
       </RadioGroup>
     </Modal>
 
@@ -78,7 +91,7 @@
       :styles="{width: '230px',top: '220px'}"
       footer-hide>
       <RadioGroup v-model="article.branch_name">
-        <Radio v-for="branchName in branchNameGroup" :label="branchName.branch_name" :key="branchName.branch_name.index"></Radio>
+        <Radio style="margin: 5px;" v-for="branchName in branchNameGroup" :label="branchName.branch_name" :key="branchName.branch_name.index"></Radio>
       </RadioGroup>
 <!--      <CheckboxGroup style="" v-model="branchGroup">-->
 <!--        <Checkbox v-for="branchName in branchNameGroup" :label="branchName.branch_name">-->
@@ -112,6 +125,7 @@
             'show_image': ''
           }
         ],
+        recommend: 'No',
         typeNameGroup: [
           {
             'type_name': '',
@@ -142,10 +156,11 @@
             article_url: this.article.article_url,
             type_name: this.article.type_name,
             branch_name: this.article.branch_name,
-            show_image: this.article.show_image
+            show_image: this.article.show_image,
+            recommend: this.recommend === 'Yes' ? 1:0
           }
         }).then(response=>{
-          this.$Message.success('提交成功')
+          this.$Message.success('提交成功');
           this.$router.push({path: '/ArticleList'});
         }).catch(error=>{
           this.$Message.error('Error')

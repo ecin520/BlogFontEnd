@@ -40,7 +40,10 @@
       :styles="{width: '230px',top: '240px'}"
       footer-hide>
       <h1 style="text-align: center">类型名称<Input v-model="type_name" /></h1><br>
-      <Button @click="addType" style="float: right">添加类型</Button><br><br>
+      <div style="display: flex;justify-content: center">
+        <Button @click="addType" style="">添加类型</Button><br><br>
+      </div>
+
     </Modal>
 
     <Modal
@@ -51,7 +54,10 @@
       :styles="{width: '230px',top: '240px'}"
       footer-hide>
       <h1 style="text-align: center">分支名称<Input v-model="branch_name" /></h1><br>
-      <Button @click="addBranch"  style="float: right">添加分支</Button><br><br>
+      <div style="display: flex;justify-content: center">
+        <Button @click="addBranch"  style="float: right">添加分支</Button><br><br>
+      </div>
+
     </Modal>
 
   </div>
@@ -144,7 +150,7 @@
   }
 
   #CreativeCenter{
-    /*background: linear-gradient(#6ea7ff, white);*/
+    background: linear-gradient(#6456d3, white);
   }
 
   #CreativeCenter #show-card{
@@ -152,14 +158,14 @@
     /*position: fixed;*/
     padding: 150px 0;
     margin: auto;
-    /*width: 400px;*/
+    /*min-width: 600px;*/
     text-align: center;
   }
 
   #CreativeCenter #show-card .back-ground{
     position: relative;
     z-index: 1;
-    color: deepskyblue;
+    color: #919eff;
     /*background: white;*/
     /*border-radius: 360px;*/
     /*border: 2px solid;*/

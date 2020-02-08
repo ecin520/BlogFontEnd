@@ -5,23 +5,16 @@
       <div id="bar">
         <ul>
           <li>
-            <i class="logo">
-              <Icon size="57" type="logo-github" />
-              <!--                <Icon size="56" type="logo-tux" />-->
-              <!--                <img src="@/assets/logo.png" alt="" />-->
-            </i>
+            <i class="logo"><Icon style="color: white" size="57" type="logo-github" /></i>
           </li>
-          <li><a class="bar-title" @click="fuck">个人主页</a></li>
-          <li><a class="bar-title" @click="date">日志</a></li>
-          <li><a class="bar-title" @click="self" id="self">自我介绍</a></li>
-          <li><a class="bar-title" @click="help" id="help">帮助</a></li>
+          <li><a style="font-family: 'JetBrains';color: white;" class="bar-title" @click="fuck">首页</a></li>
+          <li><a style="font-family: 'JetBrains';color: white;" class="bar-title" @click="date">归档</a></li>
+          <li><a style="font-family: 'JetBrains';color: white;" class="bar-title" @click="self" id="self">关于我</a></li>
+          <li><a style="font-family: 'JetBrains';color: white;" class="bar-title" @click="help" id="help">帮助</a></li>
           <li><Input class="bar-title" id="search" search placeholder="" disabled /></li>
-          <!--            <li><a class="bar-title" id="creation" @click="creationClick">Creation</a></li>-->
           <li>
-            <div id="creation"
-                 placement="bottom-end"
-                 width="190">
-              <a class="bar-title" @click="enterClick"><Icon size="40" type="ios-send-outline" /></a>
+            <div id="creation" placement="bottom-end" width="190">
+              <a class="bar-title" @click="enterClick"><Icon style="color: white;" size="40" type="ios-send-outline" /></a>
             </div>
           </li>
         </ul>
@@ -30,12 +23,11 @@
       <Layout id="side-content">
         <Sider class="animated bounce fadeInDown" id="left-side">
           <LeftSideCard></LeftSideCard>
+          <br><br>
         </Sider>
         <Content>
           <div id="content">
-            <!--            <ArticleList></ArticleList>-->
             <router-view :key="key"></router-view>
-            <!--            <div id="demo"></div>-->
           </div>
         </Content>
         <Sider class="animated bounce fadeInDown" id="right-side">
@@ -49,24 +41,24 @@
                 <Row>
         <Col span="7">
           <ul style="float: left;text-align: center;list-style-type: none;">
-            <li>作者其他平台</li><br>
-            <li><a href="https://github.com//ecin520" target="_blank"><Icon size="24" type="logo-github" /> github</a></li><br>
-            <li><a href="https://blog.csdn.net/ecin520" target="_blank"><Icon size="24" type="ios-paper-plane-outline" />CSDN</a></li><br>
-            <li><a target="_blank"><Icon size="24" type="ios-call" />Phone</a></li><br>
-            <li><a target="_blank"><Icon size="24" type="ios-mail-outline" />Gmail</a></li><br>
+            <li style="font-family: 'JetBrains';">作者其他平台</li><br>
+            <li><a style="font-family: 'JetBrains'" href="https://github.com//ecin520" target="_blank"><Icon size="24" type="logo-github" /> github</a></li><br>
+            <li><a style="font-family: 'JetBrains';" href="https://blog.csdn.net/ecin520" target="_blank"><Icon size="24" type="ios-paper-plane-outline" />&nbsp;&nbsp;CSDN</a></li><br>
+            <li><a style="font-family: 'JetBrains';" target="_blank"><Icon size="24" type="ios-call" />&nbsp;Phone</a></li><br>
+            <li><a style="font-family: 'JetBrains';" target="_blank"><Icon size="24" type="ios-mail-outline" />&nbsp;Gmail</a></li><br>
           </ul>
         </Col>
         <Col span="11">
           <span class="recomand-title">推荐链接</span><br>
           <div class="recomand-link">
             <a class="link-branch" href="https://spring.io/" target="_blank">Spring</a>
-            <a class="link-branch" href="https://cn.vuejs.org/" target="_blank">Vue中文官网</a>
+            <a class="link-branch" href="https://cn.vuejs.org/" target="_blank">Vue中文网</a>
+            <a class="link-branch" href="https://flutterchina.club/" target="_blank">Flutter中文网</a>
             <a class="link-branch" href="https://mvnrepository.com/" target="_blank">Maven</a>
+            <a class="link-branch" href="http://docscn.studygolang.com/" target="_blank">Golang中文文档</a>
             <a class="link-branch" href="https://start.spring.io/" target="_blank">SpringBoot</a>
-            <a class="link-branch" href="http://148.70.50.70/#/" target="_blank">本站首页</a>
             <a class="link-branch" href="https://www.youtube.com/?hl=zh-CN" target="_blank">Youtube</a>
             <a class="link-branch" href="https://www.bilibili.com/" target="_blank">bilibili</a>
-            <a class="link-branch" href="https://translate.google.cn/" target="_blank">Google Translate</a>
             <a class="link-branch" href="https://www.baidu.com/" target="_blank">BaiDu</a>
             <a class="link-branch" href="https://mijisou.com/" target="_blank">秘迹搜索</a>
             <a class="link-branch" href="https://btsow.pw/tags" target="_blank"></a>
@@ -74,10 +66,8 @@
             <a class="link-branch" href="https://www.microsoft.com/zh-cn/software-download/windows10" target="_blank">Win10官网下载</a>
             <a class="link-branch" href="https://www.dytt8.net/" target="_blank">电影天堂</a>
             <a class="link-branch" href="https://www.runoob.com/" target="_blank">runoob</a>
-            <a class="link-branch" href="https://wallhaven.cc/" target="_blank">wallpapaer</a>
-            <a class="link-branch" href="https://wallpaperscraft.com/" target="_blank">wallpaperscraft</a>
             <a class="link-branch" href="https://forum.xda-developers.com/" target="_blank">xda</a>
-            <a class="link-branch" href="https://morvanzhou.github.io" target="_blank">周莫烦Python</a>
+            <a class="link-branch" href="https://morvanzhou.github.io" target="_blank">莫烦Python</a>
             <a class="link-branch" href="https://www.iviewui.com/" target="_blank">iView</a>
             <a class="link-branch" href="https://cloud.tencent.com/" target="_blank">腾讯云</a>
             <a class="link-branch" href="https://element.eleme.cn/#/zh-CN/guide/design" target="_blank">ElementUI</a>
@@ -85,7 +75,6 @@
             <a class="link-branch" href="http://www.hewebgl.com/article/articledir/1" target="_blank">WebGL</a>
             <a class="link-branch" href="https://www.plexvpn.pro" target="_blank">Plex</a>
             <a class="link-branch" href="https://unbug.github.io/codelf/" target="_blank">CodeLF</a>
-            <a class="link-branch" href="https://pan.baidu.com" target="_blank">Baidu网盘</a>
             <a class="link-branch" href="https://www.kotlincn.net/docs/reference/basic-syntax.html" target="_blank">Kotlin中文文档</a>
             <a class="link-branch" href="http://www.turingapi.com/" target="_blank">图灵机器人</a>
           </div>
@@ -95,9 +84,9 @@
         </Col>
         <Col span="6">
           <div class="given">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Alipay<br>
+            &nbsp;&nbsp;&nbsp;Alipay<br>
             <img width="100px" src="@/assets/alipay.png"/>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WeChat<br>
+            <br>&nbsp;&nbsp;&nbsp;WeChat<br>
             <img width="100px" src="@/assets/wechat.png"/>
           </div>
         </Col>
@@ -106,7 +95,7 @@
                 </Row>
         <Row>
           <Divider/>
-          <p style="text-align: center">@Edited by Ecin520</p>
+          <p style="font-family: 'JetBrains';text-align: center">Copyright © 2019 All rights reserved.</p>
         </Row>
       </Footer>
     </Layout>
@@ -119,19 +108,21 @@
       footer-hide>
       <h3 style="text-align: center"><Icon size="50" type="md-key" />At the Modal,input the private key to entry the editor.</h3><br>
       <Input type="password" v-model="KeyPassword" placeholder=""/><br><br>
-      <a @click="entryEditor" style="float: right"><Icon  size="40" type="md-checkmark" /></a><br><br>
+      <div style="display: flex;justify-content: center;">
+        <a @click="entryEditor" style="float: right"><Icon  size="40" type="md-checkmark" /></a>
+      </div>
     </Modal>
 
     <!--    <a class="go-top" href="#top"><Icon size="50" type="ios-arrow-dropup-circle" /></a>-->
   </div>
 </template>
 <script>
-  import LeftSideCard from '../components/sides/LeftSideCard'
-  import Announcement from '../components/sides/Announcement'
-  import RightLabel from '../components/sides/RightLabel'
-  import ArticleList from '../components/content/ArticleList'
-  import https from '../https'
-  export default {
+    import LeftSideCard from '../components/sides/LeftSideCard'
+    import Announcement from '../components/sides/Announcement'
+    import RightLabel from '../components/sides/RightLabel'
+    import ArticleList from '../components/content/ArticleList'
+
+    export default {
     components: {Announcement, LeftSideCard,RightLabel,ArticleList},
     data(){
       return{
@@ -200,18 +191,15 @@
   /*    !*margin-left: 0px;*!*/
   /*  }*/
   /*}*/
-  @media screen and (max-width: 800px){
+  @media screen and (max-width: 1200px){
     #home #side-content #left-side{
       display: none;
     }
-    #home #content{
-      margin: auto;
-      /*width: 515px;*/
-      width: 100%;
-      /*margin-left: 0px;*/
+    #content {
+      margin: 21px;
     }
   }
-  @media screen and (max-width: 720px) {
+  @media screen and (max-width: 800px) {
     #home #bar ul li .bar-title{
       font-size: 16px;
     }
@@ -220,7 +208,7 @@
     }
     #home #content{
       margin: auto;
-      /*width: 415px;*/
+      /*width: 65px;*/
       width: 100%;
       /*margin-left: 0px;*/
     }
@@ -245,9 +233,13 @@
     #home .go-top{
       display: none;
     }
+
+    #home #content{
+
+    }
   }
 
-  @media screen and (max-width: 520px){
+  @media screen and (max-width: 660px){
     .recomand-link{
       display: none;
     }
@@ -257,8 +249,18 @@
     .recomand-title{
       display: none;
     }
+
+
+
   }
   /*------------------border----------------------*/
+
+
+
+  #content {
+    margin: 21px;
+  }
+
   div {
     position: relative;
   }
@@ -266,12 +268,12 @@
     z-index: 1;
   }
   #home #bar ul{
-    box-shadow: 0 1px 5px #b4b4b4;
+    box-shadow: 0 1px 5px #7a7a7a;
     list-style-type: none;
     width: 100%;
     position: fixed;
     font-size: 16px;
-    background: white;
+    background: #24292e;
     left: 0;
   }
   #home #bar #search{
@@ -314,7 +316,7 @@
     width: 70%;
   }
   #home #side-content {
-    margin-top: 70px;
+    margin-top: 50px;
   }
   #home #left-side{
     background: none;
@@ -330,24 +332,27 @@
     color: #52c41a;
   }
   #home #bar .logo{
-    color: rgb(0, 0, 0);
+    color: rgb(94, 180, 211);
   }
   #home #bar .logo:hover{
     /*color: #256c91;*/
     cursor: pointer;
   }
   .recomand-link{
-    padding: 20px;
+    padding: 5px;
   }
   .recomand-link .link-branch{
-    padding: 5px;
-    color: #008800;
+    padding: 10px;
+    color: #4198aa;
+    font-family: 'JetBrains';
   }
   .given{
     margin-left: 40%;
+    font-family: 'JetBrains';
   }
 
   .recomand-title{
     margin-left: 37%;
+    font-family: 'JetBrains';
   }
 </style>

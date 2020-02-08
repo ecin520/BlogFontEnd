@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <div class="bg-color"></div>
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
   </div>
@@ -30,4 +31,5 @@ export default {
 </script>
 
 <style>
+  @import "./styles/index.css";
 </style>
